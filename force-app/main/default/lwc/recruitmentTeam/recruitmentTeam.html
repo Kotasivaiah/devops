@@ -1,0 +1,21 @@
+<template>
+  <lightning-card title="Dynamic Rows">
+      <div class="slds-m-around_medium">
+          <template for:each={rows} for:item="row">
+              <div key={row.id} class="slds-grid slds-gutters slds-m-bottom_x-small">
+                  <div class="slds-col">
+                      <lightning-input label="Recruiter Name" value={row.value} data-id={row.id} onchange={handleInputChange}></lightning-input>
+                  </div>
+                  <div class="slds-col slds-shrink-none">
+                      <template if:true={row.showAdd}>
+                          <lightning-button-icon icon-name="utility:add" alternative-text="Add Row" onclick={addRow}></lightning-button-icon>
+                      </template>
+                      <template if:true={row.showDelete}>
+                          <lightning-button-icon icon-name="utility:delete" alternative-text="Delete Row" onclick={deleteRow} data-id={row.id}></lightning-button-icon>
+                      </template>
+                  </div>
+              </div>
+          </template>
+      </div>
+  </lightning-card>
+</template>

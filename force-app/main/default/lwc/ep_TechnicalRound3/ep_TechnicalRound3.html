@@ -1,0 +1,208 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-around_medium" if:false={submitted}>
+
+            <div class="slds-grid"> 
+
+                <div class="slds-col slds-size_7-of-12">
+
+                    <div class="slds-box">
+
+                        <lightning-tabset style=" font-size: 18px;" if:true={showTabs}>
+
+                            <template for:each={questions} for:item="tab" >
+
+                                <lightning-tab key={tab.key} label={tab.key} value={tab.key} onactive={handleTabChange} >
+
+                                    <div class="slds-m-around_medium">
+
+                                        <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
+
+                                            <lightning-accordion-section name="A" label="Easy">
+
+                                                <ul class="slds-list_dotted">
+
+                                                    <template for:each={tab.easyQuestions} for:item="question">
+
+                                                        <li key={question.Id}>
+
+                                                            <lightning-layout key={question.Id}>
+
+                                                                <lightning-layout-item size="7" padding="around-small" class="slds-border_bottom">
+                                                                    {question.Question__c}
+                                                                </lightning-layout-item>
+
+                                                                <lightning-layout-item size="1" padding="around-small" class="slds-border_bottom">                                                        
+                                                                </lightning-layout-item>
+
+                                                                <lightning-layout-item size="2" padding="around-small" class="slds-border_bottom">
+                                                                    <label class="slds-m-bottom_small">
+                                                                        <input type="radio" name={question.Id} value="Yes" onchange={handleResponse} disabled={reviewed}> Yes</label>
+                                                                </lightning-layout-item>
+
+                                                                <lightning-layout-item size="2" padding="around-small" class="slds-border_bottom">
+                                                                    <label class="slds-m-bottom_small">
+                                                                        <input type="radio" name={question.Id} value="No" onchange={handleResponse} disabled={reviewed}> No</label>
+                                                                </lightning-layout-item>
+                                                                
+                                                            </lightning-layout>
+                                                        </li>
+
+                                                    </template>
+                                                </ul>
+
+                                            </lightning-accordion-section>
+
+                                            <lightning-accordion-section name="B" label="Medium">
+
+                                                <ul class="slds-list_dotted">
+
+                                                    <template for:each={tab.mediumQuestions} for:item="question">
+                                                        <li key={question.Id}>
+
+                                                            <lightning-layout key={question.Id}>
+
+                                                                <lightning-layout-item size="7" padding="around-small" class="slds-border_bottom">
+                                                                    {question.Question__c}
+                                                                </lightning-layout-item>
+
+                                                                <lightning-layout-item size="1" padding="around-small" class="slds-border_bottom">                                                        
+                                                                </lightning-layout-item>
+
+                                                                <lightning-layout-item size="2" padding="around-small" class="slds-border_bottom">
+                                                                    <label class="slds-m-bottom_small">
+                                                                        <input type="radio" name={question.Id} value="Yes" onchange={handleResponse} disabled={reviewed}> Yes</label>
+                                                                </lightning-layout-item>
+
+                                                                <lightning-layout-item size="2" padding="around-small" class="slds-border_bottom">
+                                                                    <label class="slds-m-bottom_small">
+                                                                        <input type="radio" name={question.Id} value="No" onchange={handleResponse} disabled={reviewed}> No</label>
+                                                                </lightning-layout-item>
+
+                                                            </lightning-layout>
+
+                                                        </li>
+                                                    </template>
+
+                                                </ul>
+
+                                            </lightning-accordion-section>
+
+                                            <lightning-accordion-section name="C" label="Hard">
+
+                                                <ul class="slds-list_dotted">
+
+                                                    <template for:each={tab.hardQuestions} for:item="question">
+
+                                                        <li key={question.Id}>
+                                                            <lightning-layout key={question.Id}>
+
+                                                                <lightning-layout-item size="7" padding="around-small" class="slds-border_bottom">
+                                                                    {question.Question__c}
+                                                                </lightning-layout-item>
+
+                                                                <lightning-layout-item size="1" padding="around-small" class="slds-border_bottom">                                                        
+                                                                </lightning-layout-item>
+
+                                                                <lightning-layout-item size="2" padding="around-small" class="slds-border_bottom">
+                                                                    <label class="slds-m-bottom_small">
+                                                                        <input type="radio" 
+                                                                            name={question.Id} 
+                                                                            value="Yes"
+                                                                             onchange={handleResponse} 
+                                                                             disabled={reviewed}/>Yes
+                                                                            </label>
+                                                                </lightning-layout-item>
+
+                                                                <lightning-layout-item size="2" padding="around-small" class="slds-border_bottom">
+                                                                    <label class="slds-m-bottom_small">
+                                                                        <input type="radio" 
+                                                                        name={question.Id} 
+                                                                        value="No" 
+                                                                        onchange={handleResponse} 
+                                                                        disabled={reviewed}/> No</label>
+                                                                </lightning-layout-item>
+
+                                                            </lightning-layout>
+                                                        </li>
+                                                    </template>
+
+                                                </ul>
+                                            </lightning-accordion-section>
+                                        </lightning-accordion>
+                                    </div>                      
+                                </lightning-tab>
+                            </template>
+                        </lightning-tabset>
+
+                        <template if:true={showTable}>
+                            <lightning-datatable
+                                key-field="Id"
+                                data={technicaldata}
+                                columns={columns}
+                                hide-checkbox-column="true"
+                            >
+                            </lightning-datatable>
+                        </template>
+
+                    </div> 
+                </div>
+                
+                <div class="slds-col slds-size_1-of-12" if:true={showRejectButton}> 
+                </div>
+
+                <div class="slds-col slds-size_3-of-12" if:true={showRejectButton}> 
+
+                    <div class="slds-box">
+
+                            <template for:each={assessments} for:item="assessment">
+								<div key={assessment.apiName}>
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-size_12-of-12">
+                                            <label>
+                                                {assessment.label}
+                                            </label><br>
+                                            <div>
+                                                <c-star-rating-component name={assessment.apiName} read-only={reviewed}
+                                                    default-val={assessment.value} onratingcount={starratingcount}>
+                                                </c-star-rating-component>
+                                            </div>
+                                        </div>
+									</div>
+								</div>
+							</template>
+                        <lightning-input 
+                                        type="text" 
+                                        label="Code Assessed By" 
+                                        value={technicalRoundReviewer}
+                                        disabled>
+                        </lightning-input>    
+						<lightning-input type="text" label="Average Rating" value = {averageRating} if:true={showTechnicalrating} disabled></lightning-input>	
+
+                        <div class="validate slds-text-color_error slds-p-left--large slds-text-heading_small"
+								if:true={hasEmptyTechnicalAssessment}> {fillRatingsMsg}
+                        </div>
+                        <lightning-textarea label="Overall Review" value ={review} onchange={reviewChange} disabled={reviewed}></lightning-textarea> 
+                        <div class="validate slds-text-color_error slds-p-left--large slds-text-heading_small"
+								if:true={hasEmptyTechnicalComments}> {fillCommentsMsg}
+                        </div>                       
+
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-12" if:true={showRejectButton}>
+                    
+                </div> 
+            </div><br><br>
+            <div if:true={showSelectionButtons}>     
+                    <div class="slds-m-around_medium slds-float_right">            
+                        <lightning-button variant="destructive" class="slds-m-left_xx-small" label="Reject" value="Rejected" onclick={handleSelection}></lightning-button>
+                        <lightning-button variant="brand" class="slds-m-left_xx-small" label="Hold" value="On Hold" onclick={handleSelection}></lightning-button>
+                        <lightning-button variant="success"  class="slds-m-left_xx-small" label="Select" value="Selected" onclick={handleSelection}></lightning-button>
+                    </div>
+            </div> 
+            <div class="slds-m-around_medium"  style = "font-size: 18px;" if:true={submitted}>
+                <center> {message} </center>
+            </div>
+        </div>
+    </lightning-card>
+</template>

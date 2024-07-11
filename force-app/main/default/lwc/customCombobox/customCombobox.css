@@ -1,0 +1,6 @@
+input {
+    height: 40px;
+}
+.required {
+    color: red;
+}

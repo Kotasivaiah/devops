@@ -1,0 +1,7 @@
+.dummy{
+	color : black;
+}
+.tableScroll {
+    overflow: auto;
+    //overflow-x: hidden;
+}

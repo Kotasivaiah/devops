@@ -1,0 +1,22 @@
+:host {
+	--slds-c-tabs-item-text-color : black !important;
+	--slds-c-tabs-item-text-color-active : red !important;
+}
+
+.slds-tabs_default__content {
+	min-height: 100%;
+}
+
+.slds-tabs_default__item {
+	color: var(--slds-c-tabs-item-text-color);
+}
+
+.slds-tabs_default__item .slds-is-active {
+	color: var(--slds-c-tabs-item-text-color-active);
+	/* #02426f */
+}
+
+.slds-modal__content {
+	max-height: 450px !important;
+	min-height: 450px !important;
+}

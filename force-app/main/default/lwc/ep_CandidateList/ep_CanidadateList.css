@@ -1,0 +1,5 @@
+.customHeader {
+	background-color: var(--slds-c-accordion-summary-color-background, #02426f);
+  /* border-radius: var(--slds-c-badge-radius-border, 15rem); */
+  color: var(--slds-c-accordion-heading-text-color, white);
+}

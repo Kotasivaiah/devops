@@ -1,0 +1,25 @@
+<template>
+    <c-ep_-custom-header showlogo="true"></c-ep_-custom-header>
+    <div class="slds-p-around_large" style="background-color:white; padding-top : 5%;">
+        <lightning-tabset>
+            <!-- <lightning-tab label="Technical Round">
+                <c-candidate-list-view category = "Technical"></c-candidate-list-view>
+            </lightning-tab> -->
+            <lightning-tab label="Manager Round">
+                <c-candidate-list-view category = "Manager"></c-candidate-list-view>
+            </lightning-tab>
+            <lightning-tab label="HR Round">
+                <c-candidate-list-view category = "Hr"></c-candidate-list-view>
+            </lightning-tab>
+            <!-- <lightning-tab label="On Hold">
+                <c-candidate-list-view category = "Hold"></c-candidate-list-view>
+            </lightning-tab> -->
+            <lightning-tab label="Rejected">
+                <c-candidate-list-view category = "Rejected"></c-candidate-list-view>
+            </lightning-tab>
+            <lightning-tab label="Selected">
+                <c-candidate-list-view category = "Selected"></c-candidate-list-view>
+            </lightning-tab>
+        </lightning-tabset>
+    </div>
+</template>

@@ -1,0 +1,84 @@
+input {
+	height: 40px;
+}
+
+.fullwidth {
+	width: 100% !important;
+}
+.error {
+	color: rgb(255, 31, 31);
+}
+
+.sectionHeader {
+	background-color: #02426f !important;
+	color: white;
+	border-radius: 5px;
+}
+
+input[type="checkbox"] {
+	height: auto !important;
+}
+
+.card {
+	padding: 5%;
+}
+
+.logoContainer {
+	height: 4rem;
+    background: #ffffff;
+    position: fixed;
+    z-index: 99999;
+	padding: 1%;
+}
+
+.customButton {
+	padding: 10px 15px 10px 15px;
+	background: #02426f; 
+	color:white;
+}
+
+.main {
+	padding-top: 5%;
+	background-color: white;
+}
+
+.maincard {
+	padding-top: 15%
+}
+
+.recruitmentImg35 {
+	width: 35%;
+}
+
+width65 {
+	width: 65%;
+}
+
+.instructions {
+	background-color: white; 
+	padding-top:70px;
+}
+
+.instructionsHeader {
+	margin-top: 11px;
+	font-size: medium;
+}
+
+.innerInstructions {
+	margin-top: 11px;
+	line-height: 28px;
+	font-size: 16px;
+}
+
+.message {
+	background-color: white;
+	padding-top : 5%;
+	font-size: 25px; 
+	color:rgb(37, 150, 190);
+	border: none;
+	margin: 2%;
+}
+
+.combobox {
+	width : 25%;
+}

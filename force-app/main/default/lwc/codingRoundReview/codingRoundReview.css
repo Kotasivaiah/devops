@@ -1,0 +1,11 @@
+:host .custom-record-picker-container {
+    width: 80px; 
+}
+
+.main {
+	background: white;
+}
+
+th.sno {
+	width : 20px;
+}

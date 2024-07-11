@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Status --></label>
+    <name>Status__c</name>
+    <picklistValues>
+        <masterLabel>Fully Done</masterLabel>
+        <translation><!-- Fully Done --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Just Attempted</masterLabel>
+        <translation><!-- Just Attempted --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not Attempted</masterLabel>
+        <translation><!-- Not Attempted --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Partially Done</masterLabel>
+        <translation><!-- Partially Done --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

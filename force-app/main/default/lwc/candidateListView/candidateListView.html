@@ -1,0 +1,111 @@
+<template>
+    <template lwc:if={candidateData}>
+        <div if:true={subtab} class="slds-vertical-tabs">
+           <ul if:true={isSubtab} class="slds-vertical-tabs__nav" role="tablist" aria-orientation="vertical">
+                <li class={progressTabClass} role="presentation">
+                    <a class="slds-vertical-tabs__link" href="#" role="tab" tabindex="0" 
+                        aria-selected={isProgressTabSelected} aria-controls="slds-vertical-tabs-0" 
+                        id="slds-vertical-tabs-0__nav" onclick={showProgressTab}>
+                        <span class="slds-vertical-tabs__left-icon"></span>
+                        <span class="slds-truncate" title={currentTabLabel}>{currentTabLabel}</span>
+                        <span class="slds-vertical-tabs__right-icon"></span>
+                    </a>
+                </li>
+                <li class={holdTabClass} role="presentation">
+                    <a class="slds-vertical-tabs__link" href="#" role="tab" tabindex="0" aria-selected={isHoldTabSelected} 
+                        aria-controls="slds-vertical-tabs-1" id="slds-vertical-tabs-1__nav" onclick={showHoldTab}>
+                        <span class="slds-vertical-tabs__left-icon"></span>
+                        <span class="slds-truncate" title={holdTabLabel}>{holdTabLabel}</span>
+                        <span class="slds-vertical-tabs__right-icon"></span>
+                    </a>
+                </li>
+                <li class={rejectedTabClass} role="presentation">
+                    <a class="slds-vertical-tabs__link" href="#" role="tab" tabindex="0" 
+                        aria-selected={isRejectedTabSelected} aria-controls="slds-vertical-tabs-2" 
+                        id="slds-vertical-tabs-2__nav" onclick={showRejectedTab}>
+                        <span class="slds-vertical-tabs__left-icon"></span>
+                        <span class="slds-truncate" title={rejectedTabLabel}>{rejectedTabLabel}</span>
+                        <span class="slds-vertical-tabs__right-icon"></span>
+                    </a>
+                </li>
+                <li class={completedTabClass} role="presentation">
+                    <a class="slds-vertical-tabs__link" href="#" role="tab" tabindex="0" 
+                        aria-selected={isCompletedTabSelected} aria-controls="slds-vertical-tabs-3" 
+                        id="slds-vertical-tabs-3__nav" onclick={showCompletedTab}>
+                        <span class="slds-vertical-tabs__left-icon"></span>
+                        <span class="slds-truncate" title={completedTabLabel}>{completedTabLabel}</span>
+                        <span class="slds-vertical-tabs__right-icon"></span>
+                    </a>
+                </li>
+            </ul>
+
+
+            <div class="slds-vertical-tabs__content slds-show slds-scrollable--x" id="slds-vertical-tabs-0" role="tabpanel" aria-labelledby="slds-vertical-tabs-0__nav">
+                <div class="slds-text-longform horizontal-scroll-container view">
+                    <div if:false={noRecords} class="horizontal-scroll-content wrapper ">
+                        <table class="slds-table slds-table_bordered slds-border--right slds-border--left table">
+                            <thead style="z-index:2;top:0;position:sticky;" >
+                                <tr>
+                                    <!-- <th class="header-side-block sticky-col" style="position: sticky; top: 0; left: 0; z-index: 3;">S.NO</th> -->
+                                    <th class="header-side-block sticky-col" style="position: sticky; top: 0;left: 0;z-index: 3;">Candidate Name</th>
+                                    <th if:true={showWrittenMarks} style="position: sticky;top: 0;left: 0;z-index: 2;">Written Marks<br/>Total (Apt. + Tech.)</th>
+                                    <th if:true={showCodingMarks} style="position: sticky;top: 0;left: 0;z-index: 2;">Coding Rating</th>
+                                    <th if:true={showAssignedTo} style="position: sticky;top: 0;left: 0;z-index: 2;">Code Assessed By</th>
+                                    <th if:true={showTrMarks} style="position: sticky;top: 0;left: 0;z-index: 2;">Technical Rating</th>
+                                    <th if:true={showTrRemarks} style="position: sticky;top: 0;left: 0;z-index: 2;">Technical Interviewer</th>
+                                    <th if:true={showTrRemarks} style="position: sticky;top: 0;left: 0;z-index: 2;">Technical Remarks</th>
+                                    <th if:true={showOnHold} style="position: sticky;top: 0;left: 0;z-index: 2;">Round On Hold</th>
+                                    <th if:true={showRejectedFrom} style="position: sticky;top: 0;left: 0;z-index: 2;">Rejected From</th>
+                                    <th if:true={showManagerRemarks} style="position: sticky;top: 0;left: 0;z-index: 2;">Manager Rating</th>
+                                    <th if:true={showManagerRemarks} style="position: sticky;top: 0;left: 0;z-index: 2;">Manager Remarks</th>
+                                    <th if:true={showHrRemarks} style="position: sticky;top: 0;left: 0;z-index: 2;">HR Rating</th>
+                                    <th if:true={showHrRemarks} style="position: sticky;top: 0;left: 0;z-index: 2;">HR Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={filteredCandidateData} for:index="index" for:item="candidate">
+                                   
+                                    <tr key={candidate.id}>
+                                        <!-- <td class="vertical-line sticky-col " style="position: sticky;left: 0;z-index: 1;background: #f8f8f8;">
+                                            <div class="slds-truncate" title="Details">
+                                                {candidate.rowNumber}
+                                            </div>
+                                        </td> -->
+                                        <td class="vertical-line sticky-col" style="position: sticky;left: 0;z-index: 1;background: #f8f8f8;">
+                                            <div class="slds-truncate" title="Details">
+                                                <a href="#" data-id={candidate.id} onclick={openDetails}>{candidate.name}</a>
+                                            </div>
+                                        </td>
+                                        <td if:true={showWrittenMarks}>({candidate.aptitudeMarks} + {candidate.technicalMarks}) = {candidate.writtenMarks}</td>
+                                        <td if:true={showCodingMarks}>{candidate.codingMarks}</td>
+                                        <td if:true={showAssignedTo}>{candidate.assignedTo}</td>
+                                        <td if:true={showTrMarks}>{candidate.trRating}</td>
+                                        <td if:true={showTrRemarks}>{candidate.trInterviewer}</td>
+                                        <td if:true={showTrRemarks} style="max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                            <div class="slds-line-clamp" title={candidate.trRemarks}>{candidate.trRemarks}</div>
+                                        </td>
+                                        <td if:true={showOnHold}>{candidate.onHoldRound}</td>
+                                        <td if:true={showRejectedFrom}>{candidate.rejectedRound}</td>
+                                        <td if:true={showManagerRemarks}>{candidate.managerRating}</td>
+                                        <td if:true={showManagerRemarks} style="max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                            <div class="slds-line-clamp" title={candidate.managerRemarks}>{candidate.managerRemarks}</div>
+                                        </td>
+                                        <td if:true={showHrRemarks}>{candidate.hrRating}</td>
+                                        <td if:true={showHrRemarks} style="max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                            <div class="slds-line-clamp" title={candidate.hrRemarks}>{candidate.hrRemarks}</div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="slds-text-heading--medium slds-text-align--center" if:true={noRecords}>No Candidates Found</div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template lwc:else>
+        <div class="slds-text-heading--medium slds-text-align--center">No Records Found </div>
+        <!-- <lightning-spinner class="slds-is-fixed" alternative-text="Loading"></lightning-spinner> -->
+    </template>
+</template>

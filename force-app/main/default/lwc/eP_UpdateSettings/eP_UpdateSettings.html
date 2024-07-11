@@ -1,0 +1,44 @@
+<template>
+
+    <div class="slds-spinner_container slds-is-fixed" if:true={showSpinner}>
+		<div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+			<span class="slds-assistive-text">Loading</span>
+			<div class="slds-spinner__dot-a"></div>
+			<div class="slds-spinner__dot-b"></div>
+		</div>
+	</div>
+
+    <div style="background:white;">
+        
+        <div class="slds-grid slds-grid_vertical">
+            <div class="slds-col slds-size_1-of-1 slds-p-around_small slds-text-align_center slds-text-heading_large slds-text-text_bold">
+                Update Passwords
+            </div>
+
+            <template for:each={buttons} for:index="index" for:item="button">
+                <div class="slds-col slds-size_1-of-1 slds-p-around_small" key={button.name}>
+
+                    <div class="slds-grid slds-p-left_small slds-p-right_small">
+                        <div class="slds-col slds-size_10-of-12">
+                            <label>{button.label}</label>
+                            <input class="slds-input" type="text" name={button.name}/>
+                        </div>
+                        <div class="slds-col slds-size_2-of-12 slds-align_absolute-center">
+                            <lightning-icon 
+                                style="padding-top:28%"
+                                icon-name='utility:save' 
+                                alternative-text='save' 
+                                variant='success' 
+                                size='medium' 
+                                title='save'
+                                data-name={button.name}
+                                onclick={handleUpdate}>
+                            </lightning-icon>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+    </div>
+</template>

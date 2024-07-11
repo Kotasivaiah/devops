@@ -1,0 +1,8 @@
+.dummy{
+	color : black;
+}
+.auto-index td:first-child:before
+{
+  counter-increment: Serial;      /* Increment the Serial counter */
+  content: counter(Serial); /* Display the counter */
+}

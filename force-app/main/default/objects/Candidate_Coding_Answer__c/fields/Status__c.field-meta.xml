@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not Attempted</fullName>
+                <default>true</default>
+                <label>Not Attempted</label>
+            </value>
+            <value>
+                <fullName>Just Attempted</fullName>
+                <default>false</default>
+                <label>Just Attempted</label>
+            </value>
+            <value>
+                <fullName>Partially Done</fullName>
+                <default>false</default>
+                <label>Partially Done</label>
+            </value>
+            <value>
+                <fullName>Fully Done</fullName>
+                <default>false</default>
+                <label>Fully Done</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,627 @@
+<template>
+
+	<c-ep_-custom-header showlogo='true'></c-ep_-custom-header>
+
+	<c-custom-toaster class="toasterOne" styling="margin:5% 15% 5% 15%; width:60%;"></c-custom-toaster>
+	<c-custom-toaster class="toaserTwo" styling="margin:12% 15% 5% 15%; width:60%;"></c-custom-toaster>
+
+	<div class="slds-spinner_container slds-is-fixed" if:true={showSpinner}>
+		<div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+			<span class="slds-assistive-text">Loading</span>
+			<div class="slds-spinner__dot-a"></div>
+			<div class="slds-spinner__dot-b"></div>
+		</div>
+	</div>
+
+	<div class="slds-p-around_small main">
+		<div class="slds-grid">
+			<div class="slds-col slds-size_2-of-3">
+
+				<template if:true={isSubmitted}>
+					<div class="headerPadding">
+						<div class="slds-grid slds-grid_vertical slds-p-around_large">
+							<div class="slds-col slds-size_1-of-1 slds-align_absolute-center">
+								<lightning-icon class="slds-p-around_large" icon-name="action:approval"
+									alternative-text="Approved" title="Approved" size="large"></lightning-icon>
+							</div>
+							<div class="slds-col slds-size_1-of-1">
+								<div class="slds-text-heading_large slds-align_absolute-center">
+									Registration has been completed successfully. Thank you!
+								</div>
+								<div class="slds-text-body_regular slds-align_absolute-center">
+									<pre>Redirecting to <a href="https://bigworks.co/" target="_self">www.bigworks.co</a> in 10 seconds...</pre>
+								</div>
+							</div>
+						</div>
+					</div>
+				</template>
+
+				<template if:false={isSubmitted}>
+					<!-- personal Details -->
+					<div class="slds-p-around_large">
+						<div class="slds-text-heading_small sectionHeader slds-p-around_small">Personal Details</div>
+						<div class="slds-grid slds-wrap">
+							<div class="slds-col slds-size_1-of-2 slds-p-around_small slds-form-element">
+								<div class="slds-form-element">
+									<abbr class="required" title="required">*</abbr><label class="slds-form-element__label">First Name</label>
+									<div class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+										<div class="slds-form-element__addon">
+											<lightning-icon size="x-small" icon-name="utility:user"></lightning-icon>
+										</div>
+										<input type="text" name="firstName" aria-labelledby="fixed-text-label fixed-text-addon-pre" class="slds-input customInput field" />
+                                    </div>
+										<p class="firstNameempty">{emptyError}</p>
+										<p class="firstName error slds-hide">{requiredError}</p>
+										<p class="firstNameinvalid error slds-hide">{invalid}</p>
+									</div>
+								</div>
+								<div class="slds-col slds-size_1-of-2 slds-p-around_small slds-form-element">
+									<div class="slds-form-element">
+										<abbr class="required" title="required">*</abbr><label class="slds-form-element__label">Last Name</label>
+										<div
+											class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+											<div class="slds-form-element__addon">
+												<lightning-icon size="x-small" icon-name="utility:user">
+												</lightning-icon>
+											</div>
+											<input type="text" name="lastName" aria-labelledby="fixed-text-label fixed-text-addon-pre" class="slds-input customInput field" />
+                                    </div>
+											<p class="lastNameempty">{emptyError}</p>
+											<p class="lastName error slds-hide">{requiredError}</p>
+											<p class="lastNameinvalid error slds-hide">{invalid}</p>
+										</div>
+									</div>
+									<div class="slds-col slds-size_1-of-2 slds-p-around_small">
+										<div class="slds-form-element">
+											<abbr class="required" title="required">*</abbr><label class="slds-form-element__label">Date Of Birth</label>
+											<div
+												class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+												<div class="slds-form-element__addon">
+													<lightning-icon size="x-small" icon-name="utility:date_input">
+													</lightning-icon>
+												</div>
+												<input type="date" name="dob" aria-labelledby="fixed-text-label fixed-text-addon-pre" class="slds-input customInput field" />
+                                    </div>
+												<p class="dobempty">{emptyError}</p>
+												<p class="dob error slds-hide">{requiredError}</p>
+												<p class="dobinvalid error slds-hide">{invalid}</p>
+											</div>
+										</div>
+										<div class="slds-col slds-size_1-of-2 slds-p-around_small">
+											<lightning-combobox class="field" name="gender" label="Gender" value=""
+												options={gender} placeholder="Select Gender" required>
+											</lightning-combobox>
+											<p class="gender empty">{emptyError}</p>
+											<p class="gender error slds-hide">{requiredError}</p>
+										</div>
+										<div class="slds-col slds-size_1-of-2 slds-p-around_small">
+											<div class="slds-form-element">
+												<abbr class="required" title="required">*</abbr><label class="slds-form-element__label">Mobile Number</label>
+												<div
+													class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+													<div class="slds-form-element__addon">
+														<lightning-icon size="x-small" icon-name="utility:call">
+														</lightning-icon>
+													</div>
+													<input type="tel" name="mobileNumber" aria-labelledby="fixed-text-label fixed-text-addon-pre" class="slds-input customInput field" />
+                                    </div>
+													<p class="mobileNumberempty">{emptyError}</p>
+													<p class="mobileNumber error slds-hide">{requiredError}</p>
+													<p class="mobileNumberinvalid error slds-hide">{invalid}</p>
+												</div>
+											</div>
+											<div class="slds-col slds-size_1-of-2 slds-p-around_small">
+												<div class="slds-form-element">
+													<label class="slds-form-element__label">Alternate Mobile Number</label>
+													<div
+														class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+														<div class="slds-form-element__addon">
+															<lightning-icon size="x-small" icon-name="utility:call">
+															</lightning-icon>
+														</div>
+														<input type="tel" name="altMobileNumber" aria-labelledby="fixed-text-label fixed-text-addon-pre" class="slds-input customInput" />
+                                    </div>
+														<p class="altMobileNumberempty">{emptyError}</p>
+														<p class="altMobileNumber error slds-hide">{requiredError}</p>
+														<p class="altMobileNumberinvalid error slds-hide">{invalid}</p>
+													</div>
+												</div>
+												<div class="slds-col slds-size_1-of-2 slds-p-around_small">
+													<div class="slds-form-element">
+														<abbr class="required" title="required">*</abbr><label class="slds-form-element__label">Email Id</label>
+														<div
+															class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+															<div class="slds-form-element__addon">
+																<lightning-icon size="x-small"
+																	icon-name="utility:email"></lightning-icon>
+															</div>
+															<input type="email" name="email" aria-labelledby="fixed-text-label fixed-text-addon-pre" class="slds-input customInput field" />
+                                    </div>
+															<p class="emailempty">{emptyError}</p>
+															<p class="email error slds-hide">{requiredError}</p>
+															<p class="emailinvalid error slds-hide">{invalid}</p>
+														</div>
+													</div>
+													<div class="slds-col slds-size_1-of-2 slds-p-around_small">
+														<c-custom-combobox class="field" name="sl" options={languages}
+															label="Languages Spoken"
+															onchange={handleCustomPicklistChange} required="true">
+														</c-custom-combobox>
+														<p class="slempty">{emptyError}</p>
+														<p class="sl error slds-hide">{requiredError}</p>
+														<p class="slinvalid error slds-hide">{invalid}</p>
+													</div>
+													<div
+														class="slds-col slds-size_1-of-2 slds-p-around_small slds-hide _othersl">
+													</div>
+													<div
+														class="slds-col slds-size_1-of-2 slds-p-around_small slds-hide _othersl">
+														<abbr class="required" title="required">*</abbr><label class="slds-form-element__label">Other Spoken Languages</label>
+														<input name="othersl" type="text" class="slds-input field"></input>
+														<p class="otherslempty">{emptyError}</p>
+														<p class="othersl error slds-hide">{requiredError}</p>
+														<p class="otherslinvalid error slds-hide">{invalid}</p>
+													</div>
+													<div class="slds-col slds-size_1-of-2 slds-p-around_small">
+														<div class="slds-form-element">
+															<abbr class="required" title="required">*</abbr><label class="slds-form-element__label">Current Address</label>
+															<div
+																class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+																<div class="slds-form-element__addon">
+																	<lightning-icon size="x-small"
+																		icon-name="utility:home"></lightning-icon>
+																</div>
+																<textarea name="caddress" aria-labelledby="fixed-text-label fixed-text-addon-pre" class="slds-input customInput field"></textarea>
+															</div>
+															<p class="caddressempty">{emptyError}</p>
+															<p class="caddress error slds-hide">{requiredError}</p>
+															<p class="caddressinvalid error slds-hide">{invalid}</p>
+														</div>
+													</div>
+													<div class="slds-col slds-size_1-of-2 slds-p-around_small">
+														<div class="slds-form-element">
+															<abbr class="required" title="required">*</abbr><label class="slds-form-element__label">Permanent Address</label>
+															<div
+																class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+																<div class="slds-form-element__addon">
+																	<lightning-icon size="x-small"
+																		icon-name="utility:home"></lightning-icon>
+																</div>
+																<textarea name="paddress" aria-labelledby="fixed-text-label fixed-text-addon-pre" class="slds-input customInput"></textarea>
+															</div>
+															<p class="paddressempty">{emptyError}</p>
+															<p class="paddress error slds-hide">{requiredError}</p>
+															<p class="paddressinvalid error slds-hide">{invalid}</p>
+														</div>
+														<div class="slds-form-element">
+															<div class="slds-form-element__control">
+																<div class="slds-checkbox">
+																	<input type="checkbox" id="address-checkbox" name="pcheckbox" onclick={togglePermanantAddress}/>
+																	<label class="slds-checkbox__label" for="address-checkbox">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-form-element__label">Same as current address</span>
+                                            </label>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- academic detalis -->
+											<div class="slds-p-around_large">
+												<div class="slds-text-heading_small sectionHeader slds-p-around_small">
+													Academic Details</div>
+												<table class="slds-table slds-table_cell-buffer slds-table_fixed-layout"
+													aria-labelledby="element-with-table-label other-element-with-table-label">
+													<thead>
+														<tr class="slds-line-height_reset topBorder  bottomBorder">
+															<th></th>
+															<th>
+																Institution Name
+															</th>
+															<th>
+																Branch
+															</th>
+															<th>
+																Passing Year
+															</th>
+															<th>
+																Hallticket No.
+															</th>
+															<th>
+																Percentage/GPA
+															</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr class="slds-line-height_reset topBorder ">
+															<td>Post Graduation</td>
+															<td class="noBottomtd">
+																<input type="text" class="slds-input pgfield" name="pgName"/>
+																<pre class="pgNameempty">{emptyError}</pre>
+																<p class="pgName error slds-hide">{requiredError}</p>
+																<p class="pgNameinvalid error slds-hide">{invalid}</p>
+															</td>
+															<td class="noBottomtd">
+																<lightning-combobox variant="label-hidden"
+																	class="pgfield" name="pgBranch" value=""
+																	options={pgBranch} onchange={handlePicklistChange}>
+																</lightning-combobox>
+																<pre class="pgBranchempty">{emptyError}</pre>
+																<p class="pgBranch error slds-hide">{requiredError}</p>
+																<p class="pgBranchinvalid error slds-hide">{invalid}</p>
+															</td>
+															<td class="noBottomtd">
+																<lightning-combobox variant="label-hidden"
+																	class="pgfield" name="pgYear" value=""
+																	options={pgPassingYear}></lightning-combobox>
+																<pre class="pgYearempty">{emptyError}</pre>
+																<p class="pgYear error slds-hide">{requiredError}</p>
+																<p class="pgYearinvalid error slds-hide">{invalid}</p>
+															</td>
+															<td class="noBottomtd">
+																<input type="text" class="slds-input pgfield" name="pgHallTicketNumber"/>
+																<pre class="pgHallTicketNumberempty">{emptyError}</pre>
+																<p class="pgHallTicketNumber error slds-hide">
+																	{requiredError}</p>
+																<p class="pgHallTicketNumberinvalid error slds-hide">
+																	{invalid}</p>
+															</td>
+															<td class="noBottomtd">
+																<input type="text" class="slds-input pgfield" name="pgPercent"/>
+																<pre class="pgPercentempty">{emptyError} </pre>
+																<p class="pgPercent error slds-hide">{requiredError}</p>
+																<p class="pgPercentinvalid error slds-hide">{invalid}
+																</p>
+															</td>
+														</tr>
+														<tr class="slds-line-height_reset _otherpgBranch slds-hide ">
+															<td></td>
+															<td></td>
+															<td class="">
+																<abbr class="required" title="required">*</abbr><label class="slds-form-element__label">Other PG Branch</label><br>
+																<input type="text" class="slds-input field" name="otherpgBranch"/>
+																<p class="otherpgBranch error slds-hide">{requiredError}
+																</p>
+																<p class="otherpgBranchinvalid error slds-hide">
+																	{invalid}</p>
+															</td>
+															<td></td>
+															<td></td>
+															<td></td>
+														</tr>
+														<tr class="slds-line-height_reset topBorder ">
+															<td><abbr class="required" title="required">*</abbr>Graduation
+															</td>
+															<td class="noBottomtd">
+																<input type="text" class="slds-input field" id="cname" name="collegeName"/>
+																<pre class="collegeNameempty">{emptyError}</pre>
+																<p class="collegeName error slds-hide">{requiredError}
+																</p>
+																<p class="collegeNameinvalid error slds-hide">{invalid}
+																</p>
+															</td>
+															<td class="noBottomtd">
+																<lightning-combobox variant="label-hidden" class="field"
+																	name="branch" value="" options={branch}
+																	onchange={handlePicklistChange}>
+																</lightning-combobox>
+																<pre class="branchempty">{emptyError} </pre>
+																<p class="branch error slds-hide">{requiredError}</p>
+																<p class="branchinvalid error slds-hide">{invalid}</p>
+															</td>
+															<td class="noBottomtd">
+																<lightning-combobox variant="label-hidden" class="field"
+																	name="gYear" value=""
+																	options={graduationPassingYear}>
+																</lightning-combobox>
+																<pre class="gYearempty">{emptyError}</pre>
+																<p class="gYear error slds-hide">{requiredError}</p>
+																<p class="gYearinvalid error slds-hide">{invalid}</p>
+															</td>
+															<td class="noBottomtd">
+																<input type="text" class="slds-input field" name="gHallTicketNumber"/>
+																<pre class="gHallTicketNumberempty">{emptyError}</pre>
+																<p class="gHallTicketNumber error slds-hide">
+																	{requiredError}</p>
+																<p class="gHallTicketNumberinvalid error slds-hide">
+																	{invalid}</p>
+															</td>
+															<td class="noBottomtd">
+																<input type="text" class="slds-input field" name="gPercent"/>
+																<pre class="gPercentempty">{emptyError}</pre>
+																<p class="gPercent error slds-hide">{requiredError}</p>
+																<p class="gPercentinvalid error slds-hide">{invalid}</p>
+															</td>
+														</tr>
+														<tr class="slds-line-height_reset _otherbranch slds-hide">
+															<td></td>
+															<td></td>
+															<td>
+																<abbr class="required" title="required">*</abbr><label class="slds-form-element__label">Other Graduation Branch</label><br>
+																<input type="text" class="slds-input field" name="otherbranch"/>
+																<p class="otherbranch error slds-hide">{requiredError}
+																</p>
+																<p class="otherbranchinvalid error slds-hide">{invalid}
+																</p>
+															</td>
+															<td></td>
+															<td></td>
+															<td></td>
+														</tr>
+														<tr class="slds-line-height_reset topBorder ">
+															<td><abbr class="required" title="required">*</abbr>Intermediate/<br>Polytechnic</td>
+															<td class="noBottomtd">
+																<input type="text" class="slds-input field" id="dname" name="interName"/>
+																<pre class="interNameempty">{emptyError}</pre>
+																<p class="interName error slds-hide">{requiredError}</p>
+																<p class="interNameinvalid error slds-hide">{invalid}
+																</p>
+															</td>
+															<td class="noBottomtd">
+																<lightning-combobox variant="label-hidden" class="field"
+																	name="interBranch" value="" options={interBranch}
+																	onchange={handlePicklistChange}>
+																</lightning-combobox>
+																<pre class="interBranchempty">{emptyError}</pre>
+																<p class="interBranch error slds-hide">{requiredError}
+																</p>
+																<p class="interBranchinvalid error slds-hide">{invalid}
+																</p>
+															</td>
+															<td class="noBottomtd">
+																<lightning-combobox variant="label-hidden" class="field"
+																	name="interYear" value=""
+																	options={interPassingYear}>
+																</lightning-combobox>
+																<pre class="interYearempty">{emptyError}</pre>
+																<p class="interYear error slds-hide">{requiredError}</p>
+																<p class="interYearinvalid error slds-hide">{invalid}
+																</p>
+															</td>
+															<td class="noBottomtd">
+																<input type="text" class="slds-input" disabled/>
+																<pre>{emptyError}</pre>
+
+															</td>
+															<td class="noBottomtd">
+																<input type="text" class="slds-input field" name="interPercent"/>
+																<pre class="interPercentempty">{emptyError}</pre>
+																<p class="interPercent error slds-hide">{requiredError}
+																</p>
+																<p class="interPercentinvalid error slds-hide">{invalid}
+																</p>
+															</td>
+														</tr>
+														<tr class="slds-line-height_reset slds-hide _otherinterBranch ">
+															<td></td>
+															<td></td>
+															<td>
+																<abbr class="required" title="required">*</abbr><label class="slds-form-element__label">Other Branch</label><br>
+																<input type="text" class="slds-input field" name="otherinterBranch"/>
+																<p class="otherinterBranchempty">{emptyError}</p>
+																<p class="otherinterBranch error slds-hide">
+																	{requiredError}</p>
+																<p class="otherinterBranchinvalid error slds-hide">
+																	{invalid}</p>
+															</td>
+															<td></td>
+															<td></td>
+															<td></td>
+														</tr>
+														<tr class="slds-line-height_reset topBorder ">
+															<td><abbr class="required" title="required">*</abbr>Schooling
+															</td>
+															<td class="noBottomtd">
+																<input type="text" class="slds-input field" name="schoolName"/>
+																<pre class="schoolNameempty">{emptyError}</pre>
+																<p class="schoolName error slds-hide">{requiredError}
+																</p>
+																<p class="schoolNameinvalid error slds-hide">{invalid}
+																</p>
+															</td>
+															<td class="noBottomtd">
+																<lightning-combobox variant="label-hidden" name="branch"
+																	value="" options={branch} disabled="">
+																</lightning-combobox>
+																<pre class="branchempty">{emptyError}</pre>
+																<p class="branch error slds-hide">{requiredError}</p>
+																<p class="branchinvalid error slds-hide">{invalid}</p>
+															</td>
+															<td class="noBottomtd">
+																<lightning-combobox variant="label-hidden" class="field"
+																	name="schoolYear" value=""
+																	options={schoolPassingYear}>
+																</lightning-combobox>
+																<pre class="schoolYearempty">{emptyError}</pre>
+																<p class="schoolYear error slds-hide">{requiredError}
+																</p>
+																<p class="schoolYearinvalid error slds-hide">{invalid}
+																</p>
+															</td>
+															<td class="noBottomtd">
+																<input type="text" class="slds-input"  disabled/>
+																<pre>{emptyError}</pre>
+															</td>
+															<td class="noBottomtd">
+																<input type="text" class="slds-input field" id="spercent" name="schoolPercent"/>
+																<pre class="schoolPercentempty">{emptyError}</pre>
+																<p class="schoolPercent error slds-hide">{requiredError}
+																</p>
+																<p class="schoolPercentinvalid error slds-hide">
+																	{invalid}</p>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<!-- Technical skills -->
+											<div class="slds-p-around_large">
+												<div class="slds-text-heading_small sectionHeader slds-p-around_small">
+													Technical skills</div>
+												<div class="slds-grid slds-wrap">
+													<div class="slds-col slds-size_1-of-2 slds-p-around_small">
+														<c-custom-combobox class="field" name="pl"
+															options={programmingLanguages}
+															label="Which Programming Languages you know"
+															required="true">
+														</c-custom-combobox>
+														<p class="plempty">{emptyError}</p>
+														<p class="pl error slds-hide">{requiredError}</p>
+														<p class="plinvalid error slds-hide">{invalid}</p>
+													</div>
+													<div class="slds-col slds-size_1-of-2 slds-p-around_small">
+														<label class="slds-form-element__label">Any other technical skills</label>
+														<textarea class="slds-input"  name="otherLanguages" ></textarea>
+													</div>
+												</div>
+											</div>
+											<div>
+												<span class="slds-align_absolute-center">
+                        <button class="successButton customButton" onclick={handleApply}>Register</button>&nbsp;
+                        <button class="errorButton customButton" onclick={handleCancel}>Cancel</button>
+                    </span>
+											</div>
+				</template>
+
+			</div>
+
+			<div class="slds-col slds-size_1-of-3">
+				<div class="slds-grid slds-grid_vertical">
+					<div class="slds-col slds-size_1-of-1 slds-p-around_large height40">
+						<div class="bgColor">
+							<div class="slds-text-heading_small sectionHeader slds-p-left_small slds-p-top_small">
+								<lightning-icon size="x-small" class="slds-icon white-icon" icon-name="utility:user">
+								</lightning-icon>
+								<span>Contact Person</span>
+							</div>
+							<div class="slds-p-around_large slds-text-heading_small">
+								<b><p class="text">D. Sri lakshmi</p></b>
+								<p>Associate HR</p>
+								<p class="text">Email: hr@bigworks.co</p>
+								<p class="text">Mobile: +91-9542513106</p>
+							</div>
+						</div>
+					</div>
+					<div class="slds-col slds-size_1-of-1 slds-p-around_large height60">
+						<div class="bgColor">
+							<div class="slds-text-heading_small sectionHeader slds-p-left_small slds-p-top_small">
+								<lightning-icon size="x-small" class="slds-icon white-icon" icon-name="utility:company">
+								</lightning-icon>
+								<span>About Us</span>
+							</div>
+							<div class="slds-p-around_large slds-text-heading_small">
+								<p>Our selection process is designed to hire those who come with an inherent learner’s
+									attitude. To support and fuel this urge, we encourage our employees to get trained
+									in new technologies also take up trainer’s role in training newbies.</p><br>
+								<p>BIGWORKS management also updates training modules from time to time for employees to
+									update their knowledge.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="slds-col slds-size_1-of-1 slds-p-around_large height40">
+						<div class="bgColor">
+							<div class="slds-text-heading_small sectionHeader slds-p-left_small slds-p-top_small">
+								<lightning-icon size="x-small" class="slds-icon white-icon"
+									icon-name="utility:product_service_campaign"></lightning-icon>
+								<span>Our Products</span>
+							</div>
+							<div class="slds-p-around_large slds-text-heading_small">
+								<div class="slds-grid slds-grid_vertical">
+									<div class="slds-col slds-size_1-of-1">
+										<a href="https://bigworks.co/contacto/"
+											target="_blank"><img class="slds-align_absolute-center" src="https://bigworks.co/wp-content/uploads/2021/12/Contacto_VectorNormal-Res-300x113-1.png" width="100px" ></a>
+											<p class="slds-align_absolute-center slds-p-around_medium">The ultimate mass
+												emailing app for salesforce​</p>
+									</div>
+									<hr>
+									<div class="slds-col slds-size_1-of-1">
+										<a href="https://bigworks.co/docuvault/"
+											target="_blank"><img class="slds-align_absolute-center" src="https://bigworks.co/wp-content/uploads/2022/01/docuvcault02.png" width="100px"></a>
+											<p class="slds-align_absolute-center slds-p-around_medium">Powerful Document
+												Management for Salesforce​</p>
+									</div>
+									<hr>
+									<div class="slds-col slds-size_1-of-1">
+										<a href="https://bigworks.co/workon/"
+											target="_blank"><img class="slds-align_absolute-center" src="https://bigworks.co/wp-content/uploads/2022/09/Group-16153.png" width="100px"></a>
+											<p class="slds-align_absolute-center slds-p-around_medium">Powerful Work
+												Management Software built on Salesforce Platform</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+		<hr class="slds-m-around_small">
+
+		<div class="slds-grid slds-grid_vertical">
+			<div class="slds-col slds-size_1-of-1 slds-p-around_xxx-small">
+				<h2 class="slds-align_absolute-center">Our Offices</h2>
+			</div>
+
+			<div class="slds-col slds-size_1-of-1 slds-p-bottom_xx-large">
+				<div class="slds-grid slds-p-around_small">
+
+					<div class="slds-col slds-size_1-of-3 slds-p-around_small addresscol">
+						<div class="addresscard">
+							<div class="slds-text-heading_small sectionHeader slds-p-left_small slds-p-top_small">
+								<lightning-icon size="x-small" class="slds-icon white-icon" icon-name="utility:company">
+								</lightning-icon>
+								<span>USA Office</span>
+							</div>
+							<div class="slds-p-around_medium">
+								<p class="h4">15801 Artist Way,</p>
+								<p class="h4">Suite #4321 Addison, TX 75001</p>
+								<p class="h4">Phone: +47 213 5941 295​</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="slds-col slds-size_1-of-3 slds-p-around_small addresscol">
+						<div class="addresscard">
+							<div class="slds-text-heading_small sectionHeader slds-p-left_small slds-p-top_small">
+								<lightning-icon size="x-small" class="slds-icon white-icon" icon-name="utility:company">
+								</lightning-icon>
+								<span>INDIA Head Office</span>
+							</div>
+							<div class="slds-p-around_medium">
+								<p class="h4">8-2-681/6 Road No 12, Banjara Hills, Hyderabad, Telangana 500034.</p>
+								<p class="h4">Phone: +91 40-64591232</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="slds-col slds-size_1-of-3 slds-p-around_small addresscol">
+						<div class="addresscard">
+							<div class="slds-text-heading_small sectionHeader slds-p-left_small slds-p-top_small">
+								<lightning-icon size="x-small" class="slds-icon white-icon" icon-name="utility:company">
+								</lightning-icon>
+								<span>INDIA Development Center</span>
+							</div>
+
+							<div class="slds-p-around_medium">
+								<ul>
+									<li class="h4">Bigworks Technologies Private Limited
+										<a href={officeLocation} target='_blank'>
+											<img src={locationImage} 
+                                             width="30px" alt="google maps">
+										</a>
+									</li>
+									<template for:each={officeAddress} for:index="index" for:item="p">
+										<li class="h4" key={p}>{p}</li>
+									</template>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

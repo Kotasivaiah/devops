@@ -1,0 +1,39 @@
+<template>
+    <lightning-card>
+        <div if:true={showInputButton}>
+             <center><lightning-button variant="brand" label="showInputBox" onclick={handleshowInput}></lightning-button></center>
+        </div>
+
+        <template lwc:if={showInput}>    
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header" style=" font-size: 18px;">
+                        Panel Info
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">   
+                        <template for:each={rows} for:item="row" for:index="index">
+                            <lightning-layout key = {row.id}>
+                                <lightning-layout-item size="7"  padding="around-small"><lightning-input type="text" variant="label-hidden" name={row.id} value={row.inputValue} label="question" placeholder="Enter panel member name here..." onchange={handleInputChange}></lightning-input></lightning-layout-item>
+                                <lightning-layout-item size="1" padding="around-small"></lightning-layout-item>
+                                <lightning-layout-item size="2" padding="around-small">
+                                    <lightning-button-icon icon-name="utility:delete" variant='brand' name={row.id} class="slds-m-left_xx-small" onclick = {handledelete}></lightning-button-icon>
+                                </lightning-layout-item>
+                                <template if:true={row.isLastRow}>
+                                    <lightning-layout-item size="2" padding="around-small">
+                                        <lightning-button-icon icon-name="utility:add" variant="brand" name={row.id} class="slds-m-left_xx-small" onclick={handleAddRow}></lightning-button-icon>
+                                    </lightning-layout-item>
+                                </template>
+                            </lightning-layout>
+                        </template>
+                    </div>
+                    <footer class="slds-modal__footer">  
+                        <lightning-button label="Cancel" onclick={handleCancel}></lightning-button> &nbsp;&nbsp;
+                        <lightning-button label="Submit" onclick={handleSubmit}></lightning-button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+
+    </lightning-card>         
+</template>

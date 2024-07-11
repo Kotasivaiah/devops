@@ -1,0 +1,404 @@
+<apex:page id="CodingQuestionnaire" 
+           controller="CodingQuestionnaireController"
+           lightningStylesheets="true" sideBar="false" showHeader="false" cache="false">
+    <apex:slds />
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+    <script>
+    function hideSpinner () {
+    	let spinner = document.querySelector('.spinner');
+        if (spinner) {
+        	spinner.classList.add('slds-hide');
+            console.log('hidden Spinner!!');
+        }
+    }
+    /*$(document).keypress(
+        function(event){
+            console.log('event prevented');
+            if (event.which == '9') {
+                console.log('9');
+                event.preventDefault();
+                if (event.target.nodeName.toLowerCase() !== 'textarea') {
+                	console.log('names : ' + event.target.name);
+                }
+                console.log('sure?');
+            }
+        });*/
+    
+        (function (global) { 
+            if(typeof (global) === "undefined")
+            {
+                throw new Error("window is undefined");
+            }            
+            var _hash = "!";
+            var noBackPlease = function () {
+                global.location.href += "#";                
+                global.setTimeout(function () {
+                    global.location.href += "!";
+                }, 50);
+            };            
+
+            global.onhashchange = function () {
+                if (global.location.hash !== _hash) {
+                    global.location.hash = _hash;
+                }
+            };  
+            
+            global.onload = function () { 
+                console.log('window Loaded!!');
+                noBackPlease();            
+                // disables backspace on page except on input fields and textarea..
+                /* document.body.onkeydown = function (e) {
+                        var elm = e.target.nodeName.toLowerCase();
+                        if (e.which === 8) {
+                            e.preventDefault();
+                        }
+                        // stopping event bubbling up the DOM tree..
+                        e.stopPropagation();
+                    }; */               
+             };            
+            })(window);
+     </script>
+    <div class="spinner">
+        <div class="slds-spinner_container">
+            <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </div>
+     <apex:outputPanel id="renderedScript">
+        <script type="text/javascript">
+        
+        document.addEventListener('DOMContentLoaded', function (e) {
+            document.body.addEventListener('keydown', function (e) {
+                if (e.keyCode == 116) {
+                    e.preventDefault();
+                }
+            }, false);
+        }, false);   
+
+        function disableF5(e) { if ((e.which || e.keyCode) == 116) e.preventDefault(); };
+        $(document).bind("keydown", disableF5);
+        $(document).on("keydown", disableF5);
+        $(document).unbind("keydown", disableF5);
+        $(document).off("keydown", disableF5);
+        
+        var focusOut = 0;
+         /*function countDown(secs, elem) {
+            var element = document.getElementById(elem);
+            element.innerHTML = "<h2>You have <b>"+secs+"</b> seconds to answer the questions</h2>";
+            if(secs < 1) {
+                document.quiz.submit();
+            } else {
+                secs--;
+                setTimeout('countDown('+secs+',"'+elem+'")', 1500);
+            }
+        }*/
+    
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        var copied = false;         
+         window.addEventListener('copy', (e) => {
+            copied = true;
+        });
+        window.addEventListener('cut', (e) => {
+             copied = true;
+         });
+         window.addEventListener('paste', (e) => {
+             copied = true;
+          });        
+          window.addEventListener('blur', (e) => { 
+              if (copied) {
+                copied = false; // Reset the flag
+                return; 
+         	  }
+             		let submit;
+                    var submitElement = document.getElementById("CodingQuestionnaire:formId:submitVal");
+             
+                    if (submitElement) {
+                     	submit = submitElement.value;
+                 	}
+
+                    focusOut = focusOut + 1;
+                    if(submit == 'false'){
+                        if (focusOut == 4) {
+             				focusGone();
+                        }else if(focusOut <= 3){                
+             				alert("{!JSENCODE($Label.EP_On_TabSwitch)}");
+                        }else{
+             				alert("{!JSENCODE($Label.EP_OnAutoSubmit)}");
+                        }
+                 	}
+        });                
+                 
+        function focusGone() {
+             
+             /* let submit = document.getElementById("CodingQuestionnaire:formId:submit");
+            if (submit) {
+           		submit.value = 'true';
+            }*/
+            let clickButton = document.getElementById("CodingQuestionnaire:formId:clickButton");
+            if (clickButton) {
+             clickButton.click();
+         	}
+            alert("{!JSENCODE($Label.EP_OnAutoSubmit)}");           
+        }  
+        
+        
+        </script>
+        </apex:outputPanel>
+    
+     <style>
+        input[type="radio"] {
+            margin: 10px;
+        }
+        .logoContainer {
+            height: 4rem;
+            background: #80808014;
+            position: fixed;
+            z-index: 5;
+            top: 0;
+            width: 100%;        
+        }
+        .logo {
+            width: 17rem;
+            height: 4rem;
+            margin-left: 1%;
+            padding: 10px;
+        }
+        body {
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+        
+        #clockdiv {
+            font-family: sans-serif;
+            color: #fff;
+            display: flex;
+            font-weight: 20;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        #clockdiv > div {
+            padding: 8px;
+            border-radius: 3px;
+            background: #BF2600 !important;
+            display: inline-block;
+        }
+        
+        #clockdiv div > span {
+            padding: 8px;
+            border-radius: 3px;
+            display: inline-block;
+            background-color: #811A00;
+        }
+        
+        .smalltext {
+            padding-top: 5px;
+            font-size: 12px;
+        }
+        
+        .alert {
+            padding: 5px;
+        }
+    </style>
+     <apex:outputPanel id="timerBlock">
+        <div style="position: fixed;width: 100%;z-index: 9999;margin: 0 auto; background-color: rgba(240, 243, 253, 1);">
+            <div style="float: left">
+                <img src="https://bigworks.co/wp-content/uploads/2020/04/bw_logo_hq-1.png" class="logo" style="height:20, width:50"/>
+            </div>
+            <apex:outputPanel rendered="{!if(secondsSpent != examDuration && secondsSpent < examDuration && isSubmitted == false, true ,false)}">                
+                <div style="float: right">
+                    <h1 style="font-size: 20px; color: red" class="slds-m-around_medium">
+                        <span id="time"></span></h1>
+                    <div id="clockdiv" style="width: 50%;" class="slds-m-around_xxx-small">
+                        <div class="slds-m-around_xx-small"> 
+                            <span class="hours" id="hours"></span>
+                            <div class="smalltext">MIN</div>
+                        </div>
+                        <div class="slds-m-around_xx-small">
+                            <span class="minutes" id="minutes"></span>
+                            <div class="smalltext">SEC</div>
+                        </div>
+                    </div>
+                    <apex:form >
+                        <apex:actionFunction name="callSaveData" action="{!saveData}" reRender="panel,submit,timerBlock,qBlock,submitOutput,renderedScript"/>
+                    </apex:form>
+                    <script>
+                        function startTimer(duration, display) {
+                        var start = Date.now(),
+                            diff,
+                            minutes,
+                            seconds;
+                        function timer() {
+                            diff = duration - (((Date.now() - start) / 1000) | 0);
+                            var secs = document.getElementById("CodingQuestionnaire:formId:secSpent").value;
+                             if(secs != 0){
+                                diff = parseInt(diff) - parseInt(secs) ;
+                                diff = parseInt(diff) /60;
+                                var difference = diff.toString();
+                                const totalDiff = difference.split(".");
+                                var totalMinute = totalDiff[0];
+                                var totalSec = '0.'+totalDiff[1];
+                                totalSec = parseFloat(totalSec)*60;
+                                var secValue = totalSec.toString();
+                                const mySecArray = secValue.split(".");
+                                var secondsData = parseInt(mySecArray[0]);
+                                var secondsData1 = '0.'+ mySecArray[1];
+                                minutes = totalMinute | 0;
+                                if(parseFloat(secondsData1) > 0.5){
+                                    secondsData = secondsData + 1;
+                                    seconds = secondsData | 0;
+                                }else{
+                                    seconds = secondsData | 0;
+                                }
+                            }else{
+                                minutes = (diff / 60) | 0;
+                                seconds = (diff % 60) | 0;
+                            } 
+                            
+                            minutes = minutes < 10 ? "0" + minutes : minutes;
+                            seconds = seconds < 10 ? "0" + seconds : seconds;
+                            
+                            document.getElementById('hours').innerText = minutes; 
+                            document.getElementById('minutes').innerText = seconds;
+                            
+                            if (diff <= 0) {
+                                start = Date.now() + 1000;
+                            }
+                            if(diff == 0){
+                                console.log('clearing interval!!');
+                                if(navigator.onLine == true) {
+                                    document.getElementById("CodingQuestionnaire:formId:clickButton").click();
+                                }
+                                if(navigator.onLine == false) {
+                                    alert('Your Internet connection has lost');
+                                }
+                                clearInterval(interval);
+                            }
+                        };
+                        hideSpinner();
+                        timer();
+                        var interval = setInterval(timer, 1000);
+                        }
+                    </script>
+                </div>
+                <div style="clear:both"></div>
+            </apex:outputPanel>
+        </div>
+        <apex:outputPanel rendered="{!if(secondsSpent != examDuration && secondsSpent < examDuration && isSubmitted == false,  true ,false)}" id="qBlock"> 
+            <div style="padding-top: 100px">
+                <apex:form styleClass="slds-m-around_large" id="formId">            
+                    <apex:inputHidden value="{!isSubmitted}" id="submitVal"/>
+                    <apex:inputHidden value="{!secondsSpent}" id="secSpent"/>
+                        <apex:includeLightning />
+                        <div id="lwcContainer"></div>
+                        <script>
+                    
+                        var candidateId = '{!candidateId}';
+                            $Lightning.use("c:ExamPortal", function() {
+                                $Lightning.createComponent(
+                                    "c:ep_codingTest", 
+                                    { 
+                                        candidateId: candidateId + '###candidate',
+                                    }, 
+                                    "lwcContainer",
+                                    function(cmp) { 
+                                        console.log('LWC callback!!!');
+                                        CodingQuestionnaireController.updateStatus('{!candidateId}', function (result) {
+                                            console.log('Updated : '+ result);
+                                        });
+                                        var Minutes = parseInt('{!examDuration}'),
+                                            display = document.querySelector('#time');
+                                        startTimer(Minutes, display);
+                                    }
+                                );
+                            });   
+                         document.addEventListener("getdata", function(event){
+                                console.log('vf event data window listener => ', event.detail.submitted);
+                             /*let submit;
+                                 var submitElement = document.getElementById("CodingQuestionnaire:formId:submitVal");
+                             console.log('submitElement++>',submitElement);
+                             console.log('submitElement.value::',submitElement.value);
+                                 if (submitElement) {
+                                     submitElement.value = event.detail.submitted;;
+                                 }
+                             	console.log('submitFromLWc::',submitElement.value);*/
+                              var clicksubmitButton = document.getElementById("CodingQuestionnaire:formId:clickButton");
+                             console.log('clicksubmitButton::',clicksubmitButton);
+                             console.log('event.detail.submitted',event.detail.submitted);
+                             if (event.detail.submitted) {
+                                 console.log('if');
+                             	clicksubmitButton.click();
+                            }
+                        });
+                        </script>
+                    <apex:outputPanel id="panel">                        
+                        <apex:inputHidden value="{!autoSubmit}" id="submit"  />
+                    </apex:outputPanel>
+                    <center class="slds-m-top_medium">
+                        <div id="show">                            
+                          <apex:commandButton styleClass="slds-button_brand slds-button slds-hide"
+                                                value="Submit" id="clickButton" onclick="OnSubmit()" reRender="none"></apex:commandButton>
+                        </div>
+                    </center>
+                </apex:form>
+            </div>
+            <script>
+                function OnSubmit(){
+                    console.log('submit clicked!!!');
+                    callLWCMethod();
+                    callSaveData();
+                 }
+                 function callLWCMethod() {
+                    var lwcComponent = document.querySelector("c-ep_coding-test");
+                    lwcComponent.handleSubmit();
+                }
+            </script>
+        </apex:outputPanel>
+        
+        <apex:outputPanel style="text-align: center" rendered="{!isSubmitted}" id="submitOutput">        
+            <script type="text/javascript">
+            	hideSpinner();
+            /*window.onload = maxWindow;
+                function maxWindow() {
+                    window.moveTo(0, 0);            
+                    if (document.all) {
+                        top.window.resizeTo(screen.availWidth, screen.availHeight);
+                    }            
+                    else if (document.layers || document.getElementById) {
+                        if (top.window.outerHeight < screen.availHeight || top.window.outerWidth < screen.availWidth) {
+                            top.window.outerHeight = screen.availHeight;
+                            top.window.outerWidth = screen.availWidth;
+                        }
+                    }
+                }*/
+            </script>
+            <apex:outputPanel rendered="{! if((!inProgress) && isSubmitted == true, true, false)}">
+                <div style="padding-top: 100px; font-size: 25px; color:rgb(37, 150, 190);">
+                    <center>
+                        <h1>{!$Label.EP_CodingTest_Submitted}</h1>
+                        <h2>{!$Label.EP_AfterSubmission}</h2>
+                    </center>
+                </div>
+            </apex:outputPanel>
+            
+            <apex:outputPanel rendered="{! if(inProgress && isSubmitted == true, true, false)}">
+                <div style="padding-top: 100px; font-size: 25px; color:rgb(37, 150, 190);">
+                    <center>
+                        <h1>{!$Label.EP_codingInProgress}</h1>
+                    </center>
+                </div>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:outputPanel>
+</apex:page>

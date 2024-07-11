@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Percentage</fullName>
+                <default>false</default>
+                <label>Percentage</label>
+            </value>
+            <value>
+                <fullName>Calendar</fullName>
+                <default>false</default>
+                <label>Calendar</label>
+            </value>
+            <value>
+                <fullName>Average</fullName>
+                <default>false</default>
+                <label>Average</label>
+            </value>
+            <value>
+                <fullName>Clock</fullName>
+                <default>false</default>
+                <label>Clock</label>
+            </value>
+            <value>
+                <fullName>Profit and Loss</fullName>
+                <default>false</default>
+                <label>Profit and Loss</label>
+            </value>
+            <value>
+                <fullName>Compound Intereset</fullName>
+                <default>false</default>
+                <label>Compound Intereset</label>
+            </value>
+            <value>
+                <fullName>Simple Intereset</fullName>
+                <default>false</default>
+                <label>Simple Intereset</label>
+            </value>
+            <value>
+                <fullName>Problems on Ages</fullName>
+                <default>false</default>
+                <label>Problems on Ages</label>
+            </value>
+            <value>
+                <fullName>Time and Distance</fullName>
+                <default>false</default>
+                <label>Time and Distance</label>
+            </value>
+            <value>
+                <fullName>Height and Distance</fullName>
+                <default>false</default>
+                <label>Height and Distance</label>
+            </value>
+            <value>
+                <fullName>Boats and Streams</fullName>
+                <default>false</default>
+                <label>Boats and Streams</label>
+            </value>
+            <value>
+                <fullName>C</fullName>
+                <default>false</default>
+                <label>C</label>
+            </value>
+            <value>
+                <fullName>DBMS</fullName>
+                <default>false</default>
+                <label>DBMS</label>
+            </value>
+            <value>
+                <fullName>CSS</fullName>
+                <default>false</default>
+                <label>CSS</label>
+            </value>
+            <value>
+                <fullName>HTML</fullName>
+                <default>false</default>
+                <label>HTML</label>
+            </value>
+            <value>
+                <fullName>JavaScript</fullName>
+                <default>false</default>
+                <label>JavaScript</label>
+            </value>
+            <value>
+                <fullName>Java</fullName>
+                <default>false</default>
+                <label>Java</label>
+            </value>
+            <value>
+                <fullName>Python</fullName>
+                <default>false</default>
+                <label>Python</label>
+            </value>
+            <value>
+                <fullName>SQL</fullName>
+                <default>false</default>
+                <label>SQL</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Technical</controllingFieldValue>
+            <valueName>C</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical</controllingFieldValue>
+            <valueName>DBMS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical</controllingFieldValue>
+            <valueName>CSS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical</controllingFieldValue>
+            <valueName>HTML</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical</controllingFieldValue>
+            <valueName>JavaScript</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical</controllingFieldValue>
+            <valueName>Java</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical</controllingFieldValue>
+            <valueName>Python</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical</controllingFieldValue>
+            <valueName>SQL</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Percentage</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Calendar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Average</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Clock</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Profit and Loss</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Compound Intereset</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Simple Intereset</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Problems on Ages</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Time and Distance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Height and Distance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Boats and Streams</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

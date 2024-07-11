@@ -1,0 +1,14 @@
+<template>
+    <div class={rateClass}>
+        <input type="radio" id="star15" name={name} value="5" checked={isChecked5} onchange={rating} disabled={isReadOnly} />
+        <label for="star15" title="5 stars">5 stars</label>
+        <input type="radio" id="star14" name={name} value="4" checked={isChecked4} onchange={rating} disabled={isReadOnly} />
+        <label for="star14" title="4 stars">4 stars</label>
+        <input type="radio" id="star13" name={name} value="3" checked={isChecked3} onchange={rating} disabled={isReadOnly} />
+        <label for="star13" title="3 stars">3 stars</label>
+        <input type="radio" id="star12" name={name} value="2" checked={isChecked2} onchange={rating} disabled={isReadOnly} />
+        <label for="star12" title="2 stars">2 stars</label>
+        <input type="radio" id="star11" name={name} value="1" checked={isChecked1} onchange={rating} disabled={isReadOnly} />
+        <label for="star11" title="1 star">1 star</label>
+    </div>
+</template>

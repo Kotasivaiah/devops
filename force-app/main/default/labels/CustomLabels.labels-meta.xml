@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Default_Account_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Default Account Name</shortDescription>
+        <value>BigWorks Pvt Ltd</value>
+    </labels>
+    <labels>
+        <fullName>EP_AfterSubmission</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_AfterSubmission</shortDescription>
+        <value>Thank you</value>
+    </labels>
+    <labels>
+        <fullName>EP_Assignment_Success</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_Assignment Success</shortDescription>
+        <value>Reviewers has been assigned successfully!!</value>
+    </labels>
+    <labels>
+        <fullName>EP_CodingRoundReview</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_CodingRoundReview</shortDescription>
+        <value>CodingReview</value>
+    </labels>
+    <labels>
+        <fullName>EP_CodingTest_Submitted</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_CodingTest_Submitted</shortDescription>
+        <value>You have successfully completed your online Coding test, please wait for the results.</value>
+    </labels>
+    <labels>
+        <fullName>EP_Empty_Panel_Member</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_Empty Panel Member</shortDescription>
+        <value>Please select a Panel Member.</value>
+    </labels>
+    <labels>
+        <fullName>EP_Empty_Round</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_Empty Round</shortDescription>
+        <value>Select the round</value>
+    </labels>
+    <labels>
+        <fullName>EP_EncryptionCode</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_EncryptionCode</shortDescription>
+        <value>BigW@rksBigW@rks</value>
+    </labels>
+    <labels>
+        <fullName>EP_Fill_All_Comments</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_Fill All Comments</shortDescription>
+        <value>*Please fill comments for all questions!!</value>
+    </labels>
+    <labels>
+        <fullName>EP_Fill_All_Ratings</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_Fill All Ratings</shortDescription>
+        <value>Please fill all ratings above</value>
+    </labels>
+    <labels>
+        <fullName>EP_Fill_All_Statuses</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_Fill All Statuses</shortDescription>
+        <value>*Please fill status for all questions!!</value>
+    </labels>
+    <labels>
+        <fullName>EP_Fill_Comments</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_Fill Comments</shortDescription>
+        <value>Please fill the comments above</value>
+    </labels>
+    <labels>
+        <fullName>EP_GoogleLocationImage</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_GoogleLocationImage</shortDescription>
+        <value>https://w7.pngwing.com/pngs/924/833/png-transparent-google-maps-2020-icon-hd-logo-thumbnail.png</value>
+    </labels>
+    <labels>
+        <fullName>EP_Manual_Reviewer_Heading</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_Manual Reviewer Heading</shortDescription>
+        <value>Manual Reviewer Assignment To Code Review</value>
+    </labels>
+    <labels>
+        <fullName>EP_Manual_Technical_Heading</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_Manual Technical Heading</shortDescription>
+        <value>Manual Reviewer Assignment To Technical Review</value>
+    </labels>
+    <labels>
+        <fullName>EP_Need_Assigments</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_Need Assigments</shortDescription>
+        <value>There are few candidates who need reviewers to be assigned!!</value>
+    </labels>
+    <labels>
+        <fullName>EP_No_Records</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_No Records</shortDescription>
+        <value>No records to display</value>
+    </labels>
+    <labels>
+        <fullName>EP_OfficeAddress</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_OfficeAddress</shortDescription>
+        <value>Plot No 409;;5th Floor Alekhya Swarna Road #9;; Rd Number 10, Hyderabad;;Telangana 500081.</value>
+    </labels>
+    <labels>
+        <fullName>EP_OfficeLocation</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_OfficeLocation</shortDescription>
+        <value>https://www.google.com/maps/place/BIGWORKS+TECHNOLOGIES+PRIVATE+LIMITED/@17.4429761,78.3973663,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb914a4a8d2d47:0xde417da0edc5c5d0!8m2!3d17.4429761!4d78.3973663!16s%2Fg%2F11h91lsbpb?entry=ttu</value>
+    </labels>
+    <labels>
+        <fullName>EP_OnAutoSubmit</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_OnAutoSubmit</shortDescription>
+        <value>Your examination is terminated, please close the window</value>
+    </labels>
+    <labels>
+        <fullName>EP_On_TabSwitch</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_On_TabSwitch</shortDescription>
+        <value>Your exam will be terminated if you switch the browser.</value>
+    </labels>
+    <labels>
+        <fullName>EP_PanelMemberProfile</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_PanelMemberProfile</shortDescription>
+        <value>Standard Platform User;Chatter Free User</value>
+    </labels>
+    <labels>
+        <fullName>EP_Programming_Language_List</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_Programming_Language_List</shortDescription>
+        <value>Java;;Python;;HTML;;CSS;;Javascript;;DBMS;;SQL;;JQuery;;Salesforce</value>
+    </labels>
+    <labels>
+        <fullName>EP_Registration_RequiredField</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_Registration_RequiredField</shortDescription>
+        <value>Please fill this field</value>
+    </labels>
+    <labels>
+        <fullName>EP_Registration_WrongFormat</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_Registration_WrongFormat</shortDescription>
+        <value>Please enter correct format</value>
+    </labels>
+    <labels>
+        <fullName>EP_WrittenTest_Submitted</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_WrittenTest_Submitted</shortDescription>
+        <value>You have successfully completed your online written test, please wait for the results.</value>
+    </labels>
+    <labels>
+        <fullName>EP_Written_in_Progress</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_Written in Progress</shortDescription>
+        <value>Your written test is already in progress!!</value>
+    </labels>
+    <labels>
+        <fullName>EP_alreadyAttemptedCoding</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_alreadyAttemptedCoding</shortDescription>
+        <value>You have already attempted for coding round!!</value>
+    </labels>
+    <labels>
+        <fullName>EP_attemptedWritten</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_attemptedWritten</shortDescription>
+        <value>You have already attempted for written round!!</value>
+    </labels>
+    <labels>
+        <fullName>EP_codingInProgress</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_codingInProgress</shortDescription>
+        <value>Your coding test is already in progress!!</value>
+    </labels>
+    <labels>
+        <fullName>EP_invalidCredentials</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_invalidCredentials</shortDescription>
+        <value>Invalid Credentials!!</value>
+    </labels>
+    <labels>
+        <fullName>EP_invalidHallTicket</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_invalidHallTicket</shortDescription>
+        <value>*Enter a valid Hallticket Number</value>
+    </labels>
+    <labels>
+        <fullName>EP_keyMatched</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_keyMatched</shortDescription>
+        <value>Secret key matched!</value>
+    </labels>
+    <labels>
+        <fullName>EP_loginIssue</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_loginIssue</shortDescription>
+        <value>Issue In login!!</value>
+    </labels>
+    <labels>
+        <fullName>EP_noEnoughTimeForCoding</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_noEnoughTimeForCoding</shortDescription>
+        <value>You have no enough time to attempt for Coding Test!!</value>
+    </labels>
+    <labels>
+        <fullName>EP_noEnoughTimeForWritten</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_noEnoughTimeForWritten</shortDescription>
+        <value>You have no enough time to attempt for Written Test!!</value>
+    </labels>
+    <labels>
+        <fullName>EP_selectLanguage</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_selectLanguage</shortDescription>
+        <value>Please select a language for test</value>
+    </labels>
+    <labels>
+        <fullName>EP_validKey</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>EP_validKey</shortDescription>
+        <value>*Enter a valid Key</value>
+    </labels>
+    <labels>
+        <fullName>Message_ClearDatabase</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Message_ClearDatabase</shortDescription>
+        <value>Database cleared successfully</value>
+    </labels>
+</CustomLabels>

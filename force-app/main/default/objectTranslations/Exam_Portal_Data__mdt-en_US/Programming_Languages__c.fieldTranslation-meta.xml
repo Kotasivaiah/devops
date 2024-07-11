@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Programming Languages --></label>
+    <name>Programming_Languages__c</name>
+    <picklistValues>
+        <masterLabel>CSS</masterLabel>
+        <translation><!-- CSS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>HTML</masterLabel>
+        <translation><!-- HTML --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>JQuery</masterLabel>
+        <translation><!-- JQuery --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>JS</masterLabel>
+        <translation><!-- JS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Java</masterLabel>
+        <translation><!-- Java --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Python</masterLabel>
+        <translation><!-- Python --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SQL</masterLabel>
+        <translation><!-- SQL --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

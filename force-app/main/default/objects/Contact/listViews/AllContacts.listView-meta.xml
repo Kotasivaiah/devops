@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AllContacts</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>Written_Test_Status__c</columns>
+    <columns>Coding_Round_Reviewer__c</columns>
+    <columns>Coding_Round_Status__c</columns>
+    <columns>Tech_Round_Interviewer__c</columns>
+    <columns>Technical_Round_Status__c</columns>
+    <columns>Exam_Start_Date__c</columns>
+    <columns>Gender__c</columns>
+    <columns>Other_Graduation_Branch__c</columns>
+    <columns>Other_PG_Branch__c</columns>
+    <columns>Username__c</columns>
+    <columns>Written_Test_Marks__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Contacts</label>
+</ListView>

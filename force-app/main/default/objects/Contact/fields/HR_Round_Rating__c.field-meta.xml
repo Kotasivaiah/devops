@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HR_Round_Rating__c</fullName>
+    <externalId>false</externalId>
+    <formula>(
+    CASE(Behavioral_Aspects__c, &quot;1&quot;, 1, &quot;2&quot;, 2, &quot;3&quot;, 3, &quot;4&quot;, 4, &quot;5&quot;, 5, 0) +
+    CASE(Clarity_of_Thought__c, &quot;1&quot;, 1, &quot;2&quot;, 2, &quot;3&quot;, 3, &quot;4&quot;, 4, &quot;5&quot;, 5, 0) +
+    CASE(Presentability__c, &quot;1&quot;, 1, &quot;2&quot;, 2, &quot;3&quot;, 3, &quot;4&quot;, 4, &quot;5&quot;, 5, 0) +
+    CASE(Expression_of_Views__c, &quot;1&quot;, 1, &quot;2&quot;, 2, &quot;3&quot;, 3, &quot;4&quot;, 4, &quot;5&quot;, 5, 0) +
+    CASE(Communication_Skills_hr__c, &quot;1&quot;, 1, &quot;2&quot;, 2, &quot;3&quot;, 3, &quot;4&quot;, 4, &quot;5&quot;, 5, 0)
+) / 6</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>HR Round Rating</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

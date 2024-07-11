@@ -1,0 +1,47 @@
+<template>
+    <lightning-card title="Selected Questions" icon-name="custom:custom63">
+        <template if:true={questions}>
+            <template if:true={technicalQuestions.length}>
+                <h2>Technical Questions</h2>
+                <template for:each={technicalQuestions} for:item="question">
+                    <div key={question.Id} class="slds-box slds-var-m-around_small">
+                        <p><strong>Question:</strong> {question.Question__c}</p>
+                        <!-- <p><strong>Category:</strong> {question.Category__c}</p>
+                        <p><strong>Options:</strong></p>
+                        <ul>
+                            <li>{question.Option_1__c}</li>
+                            <li>{question.Option_2__c}</li>
+                            <li>{question.Option_3__c}</li>
+                            <li>{question.Option_4__c}</li>
+                        </ul> -->
+                    </div>
+                </template>
+            </template>
+
+            <template if:true={aptitudeQuestions.length}>
+                <h2>Aptitude Questions</h2>
+                <template for:each={aptitudeQuestions} for:item="question">
+                    <div key={question.Id} class="slds-box slds-m-around_small">
+                        <p><strong>Question:</strong> {question.Question__c}</p>
+                        <!-- <p><strong>Category:</strong> {question.Category__c}</p>
+                        <p><strong>Options:</strong></p>
+                        <ul>
+                            <li>{question.Option_1__c}</li>
+                            <li>{question.Option_2__c}</li>
+                            <li>{question.Option_3__c}</li>
+                            <li>{question.Option_4__c}</li>
+                        </ul> -->
+                    </div>
+                </template>
+            </template>
+        </template>
+
+        <template if:true={error}>
+            <p>Error loading questions: {error.body.message}</p>
+        </template>
+
+        <!-- <template if:true={!questions && !error}>
+            <p>Loading questions...</p>
+        </template> -->
+    </lightning-card>
+</template>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Percentage</fullName>
+        <default>false</default>
+        <label>Percentage</label>
+    </customValue>
+    <customValue>
+        <fullName>Calendar</fullName>
+        <default>false</default>
+        <label>Calendar</label>
+    </customValue>
+    <customValue>
+        <fullName>Average</fullName>
+        <default>false</default>
+        <label>Average</label>
+    </customValue>
+    <customValue>
+        <fullName>Clock</fullName>
+        <default>false</default>
+        <label>Clock</label>
+    </customValue>
+    <customValue>
+        <fullName>Profit and Loss</fullName>
+        <default>false</default>
+        <label>Profit and Loss</label>
+    </customValue>
+    <customValue>
+        <fullName>Simple Interest</fullName>
+        <default>false</default>
+        <label>Simple Interest</label>
+    </customValue>
+    <customValue>
+        <fullName>Problems on Ages</fullName>
+        <default>false</default>
+        <label>Problems on Ages</label>
+    </customValue>
+    <customValue>
+        <fullName>Time and Distance</fullName>
+        <default>false</default>
+        <label>Time and Distance</label>
+    </customValue>
+    <customValue>
+        <fullName>Height and Distance</fullName>
+        <default>false</default>
+        <label>Height and Distance</label>
+    </customValue>
+    <customValue>
+        <fullName>Boats and Streams</fullName>
+        <default>false</default>
+        <label>Boats and Streams</label>
+    </customValue>
+    <customValue>
+        <fullName>C</fullName>
+        <default>false</default>
+        <label>C</label>
+    </customValue>
+    <customValue>
+        <fullName>Java</fullName>
+        <default>false</default>
+        <label>Java</label>
+    </customValue>
+    <customValue>
+        <fullName>Pipes and Cistern</fullName>
+        <default>false</default>
+        <label>Pipes and Cistern</label>
+    </customValue>
+    <masterLabel>Category picklist</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

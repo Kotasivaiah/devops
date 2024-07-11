@@ -1,0 +1,115 @@
+<template>
+    <div class="slds-spinner_container slds-is-fixed" if:true={showSpinner}>
+		<div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+			<span class="slds-assistive-text">Loading</span>
+			<div class="slds-spinner__dot-a"></div>
+			<div class="slds-spinner__dot-b"></div>
+		</div>
+	</div>
+    
+    <div class="slds-grid slds-m-around_medium" if:true={showTable}>
+        <div class="slds-box slds-col slds-size_2-of-12">
+            <c-ep_-multi-select-searchbox
+                options = {panelList}
+                onpanelchange={handlePanelChange}
+                label = 'Panel Members'>
+                </c-ep_-multi-select-searchbox>
+
+            <!-- <table class="slds-table">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="checkboxWidth"></th>
+                        <th>
+                            Panel Member
+                        </th>                            
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <template for:each={panelList} for:index="index" for:item="user">
+                        <tr key={user.Id}>
+                            <td>
+                                <input data-id={user.Id} 
+                                        data-name={user.name} 
+                                        data-index={index}
+                                        type="checkbox" 
+                                        onclick={handlePanelCheckbox}
+                                        disabled={user.disablePanelMember} 
+                                value={user.checked}/>
+                            </td>
+                            <td>
+                                {user.name}
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table> -->
+
+        </div>
+        <!-- <div class="slds-col slds-size_1-of-12">
+        </div> -->
+        <div class="slds-box slds-m-left_small slds-col slds-size_10-of-12">
+            <div lwc:if={showCandidateTable} class="tableScroll" style = "height: 20rem;">
+                <table class="slds-table slds-table_bordered slds-border--right slds-border--left"
+                            aria-labelledby="element-with-table-label other-element-with-table-label" >
+                    <thead class="freezeHeaderParentTable">
+                        <tr class="slds-line-height_reset">
+                            <th class="checkboxWidth"></th>
+                            <th class="sno">  S.No  </th>
+                            <th> Candidate Name </th>
+                            <th> Branch </th>
+                            <th> Gender </th>                        
+                            <th>Written Marks (Apt. + Tech.) </th>
+                            <th if:true={showCodingAssigner}> Assigned To </th>                        
+                            <template if:false={showCodingAssigner}>
+                                <th> Coding Round Rating </th>
+                                <th> Coding Round Reviewer </th>
+                                <th>  Assigned To </th>
+                            </template>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={filteredCandidateData} for:index="index" for:item="candidate">
+                            <tr key={candidate.id}>
+                                <td>
+                                    <input data-id={candidate.id} 
+                                            data-name={candidate.name} 
+                                            data-index={index}
+                                            type="checkbox" 
+                                            disabled = {candidate.disableCheckbox}
+                                            onclick={handleCandidateCheckbox} 
+                                    value={candidate.checked}/>
+                                </td>
+                                <td class="sno" data-label="S.No">	{candidate.sno}	</td>
+                                <td data-id={candidate.id}>	{candidate.name} </td>
+                                <td data-id={candidate.id} >    {candidate.branch}	</td>
+                                <td data-id={candidate.id} >    {candidate.gender}	</td>
+                                <td data-id={candidate.id}>
+                                    {candidate.writtenMarks} ({candidate.aptitudeMarks} +
+                                    {candidate.technicalMarks})
+                                </td>
+                                <td data-id={candidate.id} if:true={showCodingAssigner}>    {candidate.codingReviwedBy}	</td>
+                                <template if:false={showCodingAssigner}>
+                                    <td data-id={candidate.id}> {candidate.codingMarks} </td>
+                                    <td data-id={candidate.id}> {candidate.codingReviwedBy} </td>
+                                    <td data-id={candidate.id}> {candidate.technicalReviewedBy} </td>
+                                </template>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+            <div lwc:else style = "height: 5rem;" class="slds-align_absolute-center slds-text-body_large">
+                {noRecordsMsg}
+            </div>
+            
+        </div>        
+    </div><br>
+
+    <div class="slds-m-around_medium slds-float_right" if:true={showCandidateTable}>
+        <button class="slds-button slds-button_neutral" value="unfreeze" onclick={handleClick}>UnFreeze</button>
+        <button class="slds-button slds-button_brand slds-m-left_small" value="freeze" onclick={handleClick}>Freeze</button>
+        <button class="slds-button slds-button_success slds-m-left_small" value="save" onclick={handleClick}>Save</button>
+    </div>
+    
+</template>

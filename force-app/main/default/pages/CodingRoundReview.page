@@ -1,0 +1,21 @@
+<apex:page id="CodingRoundReview" 
+           controller="CodingRoundReviewController"
+           lightningStylesheets="true" sideBar="false" showHeader="false" cache="false">
+    <apex:slds />
+
+    <apex:includeLightning />
+    <div id="lwcContainer"></div>
+    <script>
+    var candidateId = '{!candidateId}';
+        $Lightning.use("c:ExamPortal", function() {
+            $Lightning.createComponent(
+                "c:ep_codingTest", 
+                { 
+                    candidateId: candidateId
+                }, 
+                "lwcContainer",
+                function(cmp) {}
+            );
+        });
+    </script>
+</apex:page>

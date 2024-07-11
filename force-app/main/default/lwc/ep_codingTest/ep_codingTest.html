@@ -1,0 +1,163 @@
+<template> 
+    <div if:true={tabs} style="background-color: white;" class="main slds-m-around_large" >
+
+        <lightning-button 
+            variant="brand" 
+            label="Back" 
+            title="Back" 
+            onclick={handleBack}
+            if:true={showBackButton}>
+        </lightning-button>
+
+        <lightning-tabset active-tab-value={activeTab}>
+
+            <template for:each={tabs} for:item="tab" for:index="index">
+
+                <lightning-tab key={tab.label} label={tab.label} value={index} onactive={handleTabChange}>
+                    <div class="slds-box">
+
+                        <p style=" font-size: 18px;">{tab.value}</p><br>
+
+                        <div class="slds-grid slds-wrap">
+
+                                    <!-- variant = "label-hidden" -->
+                            <div class={tabClass}>
+                                <textarea
+                                    style=" font-size: 18px;"
+                                    name={index}
+                                    data-id={tab.label}
+                                    placeholder="type your code here..."
+                                    oncopy={handleCopy} oncut={handleCut} onpaste={handlePaste}
+                                    disabled ={disableCodeTextArea}
+                                    class="custom-textarea">{tab.response}
+                                </textarea>
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-12" if:true ={showReviewPanel}>
+                            </div>
+
+                            <div class="slds-col slds-size_3-of-12" if:true ={showReviewPanel}>
+                                <div class="slds-box">
+
+                                    <lightning-input 
+                                        type="text" 
+                                        variant="standard" 
+                                        name={tab.label} 
+                                        label="Code Assessed By" 
+                                        value={tab.reviewedby}
+                                        class="slds-p-bottom--medium" 
+                                        disabled>
+                                    </lightning-input> 
+                                        
+                                    <label> Rating </label>
+                                    
+                                    <div>
+                                        <c-star-rating-component name={tab.label} read-only={disableStarRating}
+                                            default-val={tab.rating} onratingcount={starratingcount}>
+                                        </c-star-rating-component>
+                                    </div>
+
+                                    <br><br><br> 
+
+                                    <lightning-combobox
+                                        name={tab.label}
+                                        label="Status"
+                                        value={tab.status}
+                                        options={options}
+                                        onchange={handleStatusChange}
+                                        disabled = {disableStarRating} >
+                                    </lightning-combobox><br>
+
+
+                                    <lightning-textarea 
+                                        type="text" 
+                                        variant="standard" 
+                                        name={tab.label} 
+                                        label="Comments" 
+                                        value={tab.comments} 
+                                        onchange = {handleComments} 
+                                        disabled = {disableStarRating}>
+                                    </lightning-textarea> <br>
+
+                                    <div if:true ={showErrorMessage} class="slds-text-color_error">
+                                        <center>{errorMessage1}</center>
+                                    </div>
+                                    <div if:true ={showComments} class="slds-text-color_error">
+                                        <center>{errorMessage2}</center>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-12" if:true ={showReviewPanel}>
+                            </div>
+
+                        </div>
+                    </div>
+                </lightning-tab>
+            </template>
+        </lightning-tabset>    
+
+        <div>
+            <lightning-button 
+                variant="brand-outline" 
+                class="slds-m-around_medium slds-float_left" 
+                label="Previous" 
+                value="previous" 
+                onclick={handlePrevious} 
+                if:true={showPrevButton}>
+            </lightning-button>
+
+            <lightning-button 
+                variant="brand" 
+                class="slds-m-around_medium slds-float_right" 
+                label="Next" 
+                value="next" 
+                onclick={handleNext} 
+                if:true={showNextButton}>
+            </lightning-button>
+
+            <lightning-button 
+                    variant="success"
+                    class="slds-m-around_medium slds-float_right"
+                    label="Submit"
+                    value="submit"
+                    onclick={handleSubmitButtonClick}
+                    if:true={showSubmitButton}>
+            </lightning-button>
+
+            <div class="slds-m-around_medium slds-float_right" if:true={showSelectionButtons}>
+                
+                <lightning-button 
+                    variant="destructive" 
+                    class="slds-m-left_xx-small" 
+                    label="Reject" 
+                    value="Rejected" 
+                    onclick={handleSelection}>
+                </lightning-button>
+
+                <lightning-button 
+                    variant="brand" 
+                    class="slds-m-left_xx-small" 
+                    label="Hold" 
+                    value="On Hold"
+                    onclick={handleSelection}
+                    if:true={showOnHoldButton}>
+                </lightning-button>
+
+                <lightning-button 
+                    variant="success"  
+                    class="slds-m-left_xx-small" 
+                    label={selectLabel} 
+                    value="Selected" 
+                    onclick={handleSelection}>
+                </lightning-button>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <div if:true={showMessage} style="color:rgb(37, 150, 190);font-size:25px;">
+        <center><b>{message}</b></center>
+    </div>
+</template>

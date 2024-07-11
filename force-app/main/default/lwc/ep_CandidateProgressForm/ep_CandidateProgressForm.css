@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.iframe {
+    border: 0px;
+}
+
+.customInputIcon {
+	background-color: rgb(128, 128, 128, 0.15) !important;
+	border-width: thin !important;
+	border-color: black !important;
+	border-style: solid !important;
+	border-radius: 5px !important;
+}
+
+  .slds-modal__container {
+    max-width: 90%;
+    width: auto;
+    margin-top: 1% !important;
+    height: auto;
+    max-height: 108%;
+}  
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.customInput {
+	border: unset !important;
+	border-left: solid thin black !important;
+	/* border-radius: 0px !important; */
+	border-radius: 0px 5px 5px 0px !important;
+}
+.rate:not(:checked)>input {
+    position: absolute;
+    top: -9999px;
+}
+
+.rate:not(:checked)>label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate:not(:checked)>label:before {
+    content: '★ ';
+}
+
+.rate>input:checked~label {
+    color: #ffc800da;
+}
+
+.rate:not(:checked)>label:hover,
+.rate:not(:checked)>label:hover~label {
+    color: #fdc600;
+}
+
+.rate>input:checked+label:hover,
+.rate>input:checked+label:hover~label,
+.rate>input:checked~label:hover,
+.rate>input:checked~label:hover~label,
+.rate>label:hover~input:checked~label {
+    color: #c59b08;
+}
+
+input {
+	height: 40px;
+}
+
+.sectionHeader {
+	background-color: #02426f !important;
+	color: white;
+	border-radius: 5px;
+}
+
+input[type="checkbox"] {
+	height: auto !important;
+}
+
+
+table thead th {
+	text-align: center;
+	background: #eaeaea;
+}
+
+.noBottomtd {
+	padding-bottom: 2px !important;
+}
+
+.topBorder {
+	border-top: 1px solid #A8A8A8;
+}
+
+.leftBorder {
+	border-left: 1px solid #A8A8A8;
+}
+
+.bottomBorder {
+	border-bottom: 1px solid #A8A8A8;
+}

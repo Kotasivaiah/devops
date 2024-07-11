@@ -1,0 +1,712 @@
+<template>
+	<c-ep_-custom-header showlogo="true"></c-ep_-custom-header>	
+	<c-custom-toaster class="toasterOne" styling="margin:5% 15% 5% 15%; width:60%;"></c-custom-toaster>
+	
+	<div lwc:if={_candidateData} style="background-color:white; padding-top:5%;">
+		<div class="slds-p-around_small">
+				<lightning-button  
+					class="slds-m-left_small" 
+					variant="brand" 
+					label="Back" 
+					title="Back" 
+					onclick={handleBack} if:true={isTechnicalRound}>
+				</lightning-button>
+			<lightning-accordion active-section-name={activeSections} allow-multiple-sections-open>
+				<lightning-accordion-section name="Candidate Information" label="Candidate Information">
+					<div class="slds-p-around_large">
+
+						<div class="slds-text-heading_small sectionHeader slds-p-around_small">Personal Details</div>
+
+						<div class="slds-grid slds-wrap">
+
+							<div class="slds-col slds-size_1-of-3 slds-p-around_small slds-form-element">
+									<label class="slds-form-element__label">Name</label>
+									<div class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+										<div class="slds-form-element__addon">
+											<lightning-icon size="x-small" icon-name="utility:user"></lightning-icon>
+										</div>
+										<input type="text" 
+											value={_candidateData.Name} disabled  
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput" />
+                                    </div>
+							</div>
+							
+							<div class="slds-col slds-size_1-of-3 slds-p-around_small">
+
+								<div class="slds-form-element">
+									<label class="slds-form-element__label">Date Of Birth</label>
+									<div class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+										<div class="slds-form-element__addon">
+											<lightning-icon size="x-small" icon-name="utility:date_input">
+											</lightning-icon>
+										</div>
+										<input type="text" value={_candidateData.Dob__c} disabled 
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput" lwc:if={_candidateData.Dob__c}/>
+										<input type="text" value="" disabled 
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput" lwc:else/>
+									</div>
+                                </div>
+
+							</div>
+
+							<div class="slds-col slds-size_1-of-3 slds-p-around_small">
+
+								<div class="slds-form-element">
+									<label class="slds-form-element__label">Gender</label>
+									<div class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+										<div class="slds-form-element__addon">
+											<lightning-icon size="x-small" icon-name="utility:user">
+											</lightning-icon>
+										</div>
+										<input type="text" value={_candidateData.Gender__c} disabled 
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput" lwc:if={_candidateData.Gender__c}/>
+										<input type="text" value="" disabled 
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput" lwc:else/>
+									</div>
+                                </div>
+
+							</div>
+
+							<div class="slds-col slds-size_1-of-3 slds-p-around_small">
+
+								<div class="slds-form-element">
+									<label class="slds-form-element__label">Phone Number</label>
+									<div class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+										<div class="slds-form-element__addon">
+											<lightning-icon size="x-small" icon-name="utility:call">
+											</lightning-icon>
+										</div>
+										<input type="text" value={_candidateData.MobilePhone} disabled 
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput" lwc:if={_candidateData.MobilePhone}/>
+
+										<input type="text" value="" disabled 
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput" lwc:else/>
+									</div>
+                                </div>
+
+							</div>
+
+
+							<div class="slds-col slds-size_1-of-3 slds-p-around_small" lwc:if={_candidateData.Alternate_Mobile__c}>
+
+								<div class="slds-form-element">
+									<label class="slds-form-element__label">Alternate Mobile Number</label>
+									<div class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+										<div class="slds-form-element__addon">
+											<lightning-icon size="x-small" icon-name="utility:date_input">
+											</lightning-icon>
+										</div>
+										<input type="text" value={_candidateData.Alternate_Mobile__c} disabled 
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput"/>
+									</div>
+                                </div>
+
+							</div>
+
+							<div class="slds-col slds-size_1-of-3 slds-p-around_small">
+
+								<div class="slds-form-element">
+									<label class="slds-form-element__label">Email</label>
+									<div class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+										<div class="slds-form-element__addon">
+											<lightning-icon size="x-small" icon-name="utility:email">
+											</lightning-icon>
+										</div>
+										<input 
+											type="text" 
+											value={_candidateData.Email} 
+											disabled 
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput"
+											lwc:if={_candidateData.Email}/>
+										<input 
+											type="text" 
+											value="" 
+											disabled 
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput"
+											lwc:else/>
+									</div>
+                                </div>
+
+							</div>
+
+							<div class="slds-col slds-size_1-of-3 slds-p-around_small">
+
+								<div class="slds-form-element">
+									<label class="slds-form-element__label">Current Address</label>
+									<div
+										class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+										<div class="slds-form-element__addon">
+											<lightning-icon size="x-small"
+												icon-name="utility:home"></lightning-icon>
+										</div>
+										<textarea 
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput field" 
+											disabled
+											lwc:if={_candidateData.Current_Location__c}>
+											{_candidateData.Current_Location__c}
+										</textarea>
+										<textarea
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput field" 
+											disabled lwc:else>
+										</textarea>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="slds-col slds-size_1-of-3 slds-p-around_small">
+
+								<div class="slds-form-element">
+									<label class="slds-form-element__label">Permanent Address</label>
+									<div
+										class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+										<div class="slds-form-element__addon">
+											<lightning-icon size="x-small"
+												icon-name="utility:home"></lightning-icon>
+										</div>
+										<textarea 
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput field" 
+											disabled
+											lwc:if={_candidateData.Permanent_Location__c}>
+											{_candidateData.Permanent_Location__c}
+										</textarea>
+										<textarea
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput field" 
+											disabled lwc:else>
+										</textarea>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="slds-col slds-size_1-of-3 slds-p-around_small">
+
+								<div class="slds-form-element">
+									<label class="slds-form-element__label">Languages</label>
+									<ul class="slds-p-around_small">
+										<template for:each={languagesSpoken} for:index="index" for:item="language" lwc:if={_candidateData.Languages_Spoken__c}>
+											<li class="slds-p-around_xx-small" key={language}>&bull;&nbsp;{language}</li>
+										</template>
+										<template lwc:else>
+											--
+										</template>
+									</ul>
+                                </div>
+							</div>
+
+						</div>
+						<div class="slds-text-heading_small sectionHeader slds-p-around_small">Acedamic Details</div>
+							<div class="slds-p-around_large">
+
+								<table class="slds-table slds-table_cell-buffer slds-table_fixed-layout"
+									aria-labelledby="element-with-table-label other-element-with-table-label">
+									<thead>
+										<tr class="slds-line-height_reset topBorder  bottomBorder">
+											<th></th>
+											<th>
+												Institution Name
+											</th>
+											<th>
+												Branch
+											</th>
+											<th>
+												Passing Year
+											</th>
+											<th>
+												Hallticket No.
+											</th>
+											<th>
+												Percentage/GPA
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="slds-line-height_reset topBorder " lwc:if={_candidateData.Post_Graduate_College_Name__c}>
+											<td>Post Graduation</td>
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input" 
+													value={_candidateData.Post_Graduate_College_Name__c} 
+													disabled lwc:if={_candidateData.Post_Graduate_College_Name__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+											</td>
+
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input" 
+													value={_candidateData.Post_Graduate_Branch__c} disabled
+													lwc:if={_candidateData.Post_Graduate_Branch__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+
+											</td>
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input" 
+													value={_candidateData.Post_Graduate_Passing_Year__c} disabled
+													lwc:if={_candidateData.Post_Graduate_Passing_Year__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+
+											</td>
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input" 
+													value={_candidateData.Post_Graduate_Hallticket_Number__c} disabled
+													lwc:if={_candidateData.Post_Graduate_Hallticket_Number__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+
+											</td>
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input" 
+													value={_candidateData.Post_Graduate_Percentage__c} disabled
+													lwc:if={_candidateData.Post_Graduate_Percentage__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+
+											</td>
+										</tr>
+
+										<tr class="slds-line-height_reset topBorder ">
+											<td>Graduation</td>
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input" 
+													value={_candidateData.Graduation_College_Name__c} disabled
+													lwc:if={_candidateData.Graduation_College_Name__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+
+											</td>
+
+											<td class="noBottomtd">
+												<input type="text" class="slds-input" value={_candidateData.Branch__c} disabled lwc:if={_candidateData.Branch__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+
+											</td>
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input"
+													value={_candidateData.Graduation_Passing_Year__c} disabled
+													lwc:if={_candidateData.Graduation_Passing_Year__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+
+											</td>
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input" 
+													value={_candidateData.Hall_Ticket_No__c} disabled
+													lwc:if={_candidateData.Hall_Ticket_No__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+
+											</td>
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input" 
+													value={_candidateData.Graduation_Percentage__c} disabled
+													lwc:if={_candidateData.Graduation_Percentage__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+
+											</td>
+										</tr>
+
+										<tr class="slds-line-height_reset topBorder ">
+											<td>Intermediate/<br>Polytechnic</td>
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input" 
+													value={_candidateData.Intermediate_Polytechnic_College_Name__c} disabled
+													lwc:if={_candidateData.Intermediate_Polytechnic_College_Name__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+												
+											</td>
+
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input" 
+													value={_candidateData.Intermediate_Polytechnic_Branch__c} disabled
+													lwc:if={_candidateData.Intermediate_Polytechnic_Branch__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+
+											</td>
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input" 
+													value={_candidateData.Intermediate_Polytechnic_Passing_Year__c} disabled
+													lwc:if={_candidateData.Intermediate_Polytechnic_Passing_Year__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+
+											</td>
+											<td class="noBottomtd">
+												<input type="text" class="slds-input" disabled/>
+											</td>
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input" 
+													value={_candidateData.Intermediate_Polytechnic_Marks_Grade__c} disabled
+													lwc:if={_candidateData.Intermediate_Polytechnic_Marks_Grade__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+
+											</td>
+										</tr>
+										
+										<tr class="slds-line-height_reset topBorder ">
+											<td>Schooling</td>
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input" 
+													value={_candidateData.School_Name__c} disabled
+													lwc:if={_candidateData.School_Name__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+
+											</td>
+
+											<td class="noBottomtd">
+												<input type="text" class="slds-input" disabled/>
+											</td>
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input" 
+													value={_candidateData.School_Passing_Year__c} disabled
+													lwc:if={_candidateData.School_Passing_Year__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+
+											</td>
+											<td class="noBottomtd">
+												<input type="text" class="slds-input" disabled/>
+											</td>
+											<td class="noBottomtd">
+												<input 
+													type="text" 
+													class="slds-input" 
+													value={_candidateData.School_Marks_Grade__c} disabled
+													lwc:if={_candidateData.School_Marks_Grade__c}/>
+												<input type="text" class="slds-input" value="" disabled lwc:else/>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
+							
+							<div class="slds-text-heading_small sectionHeader slds-p-around_small">
+								Technical skills</div>
+							<div class="slds-grid slds-wrap">
+
+								<div class="slds-col slds-size_1-of-2 slds-p-around_small">
+									<label>Programming languages known</label>
+									<ul class="slds-m-around_medium">
+										<template
+											for:each={programmingLanguageList}
+											for:index="index"
+											for:item="lan"
+											lwc:if={_candidateData.Programming_Languages_Known__c}>
+											<li key={lan}>&bull; {lan}</li>
+										</template>
+										<template lwc:else>
+											--
+										</template>
+									</ul>
+								</div>
+
+							</div>
+						</div>
+				</lightning-accordion-section>
+
+				<lightning-accordion-section name="Written Round" label="Written Round">
+					<div class="slds-p-around_large">
+
+						<!-- <div class="slds-text-heading_small sectionHeader slds-p-around_small">Personal Details</div> -->
+
+						<div class="slds-grid slds-wrap">
+
+							<div class="slds-col slds-size_1-of-3 slds-p-around_small slds-form-element">
+
+								<div class="slds-form-element">
+									<label class="slds-form-element__label">Aptitiude Marks</label>
+									<div class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+										<div class="slds-form-element__addon">
+											<lightning-icon size="x-small" icon-name="utility:number_input">
+											</lightning-icon>
+										</div>
+										<input type="text" value={_candidateData.Written_Test_Aptitude_Marks__c} disabled
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput" lwc:if={_candidateData.Written_Test_Aptitude_Marks__c}/>
+										<input type="text" value="" disabled 
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput" lwc:else/>
+									</div>
+                                </div>
+
+							</div>
+
+							<div class="slds-col slds-size_1-of-3 slds-p-around_small slds-form-element">
+
+								<label class="slds-form-element__label">Technical Marks</label>
+									<div class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+										<div class="slds-form-element__addon">
+											<lightning-icon size="x-small" icon-name="utility:number_input">
+											</lightning-icon>
+										</div>
+										<input type="text" value={_candidateData.Written_Test_Technical_Marks__c} disabled 
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput" lwc:if={_candidateData.Written_Test_Technical_Marks__c}/>
+										<input type="text" value="" disabled 
+											aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+											class="slds-input customInput" lwc:else/>
+								</div>
+
+							</div>
+
+							<div class="slds-col slds-size_1-of-3 slds-p-around_small slds-form-element">
+
+								<label class="slds-form-element__label">Total Marks</label>
+								<div class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+									<div class="slds-form-element__addon">
+										<lightning-icon size="x-small" icon-name="utility:number_input">
+										</lightning-icon>
+									</div>
+									<input type="text" value={_candidateData.Written_Test_Marks__c} disabled 
+										aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+										class="slds-input customInput" lwc:if={_candidateData.Written_Test_Marks__c}/>
+									<input type="text" value="" disabled 
+										aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+										class="slds-input customInput" lwc:else/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</lightning-accordion-section>
+
+				<lightning-accordion-section name="Coding Round" label="Coding Round">
+					<div class="slds-p-around_large">
+
+						<div class="slds-grid slds-wrap">
+
+							<div class="slds-col slds-size_1-of-3 slds-p-around_small slds-form-element">
+
+								<label class="slds-form-element__label">Average Rating</label>
+								<div class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+									<div class="slds-form-element__addon">
+										<lightning-icon size="x-small" icon-name="utility:number_input">
+										</lightning-icon>
+									</div>
+									<input type="text" value={_candidateData.Coding_Round_Marks__c} disabled 
+										aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+										class="slds-input customInput" lwc:if={_candidateData.Coding_Round_Marks__c}/>
+									<input type="text" value="" disabled 
+										aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+										class="slds-input customInput" lwc:else/>
+								</div>
+
+							</div>
+
+							<div class="slds-col slds-size_1-of-3 slds-p-around_small slds-form-element">
+
+								<label class="slds-form-element__label">Code Assessed By</label>
+								<div class="slds-form-element__control slds-input-has-fixed-addon customInputIcon">
+									<div class="slds-form-element__addon">
+										<lightning-icon size="x-small" icon-name="utility:number_input">
+										</lightning-icon>
+									</div>
+									<input type="text" value={_candidateData.Coding_Round_Reviewer__r.Name} disabled 
+										aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+										class="slds-input customInput" lwc:if={_candidateData.Coding_Round_Reviewer__r.Name}/>
+									<input type="text" value="" disabled 
+										aria-labelledby="fixed-text-label fixed-text-addon-pre" 
+										class="slds-input customInput" lwc:else/>
+								</div>
+
+							</div>
+
+
+							<div class="slds-col slds-size_1-of-3 slds-p-around_medium">
+
+								<!--<label for="codingQuestions">Coding Round Questions And Answers</label>-->
+								<div class="slds-p-around_medium" id="codingQuestions">
+									<a href="#" onclick={openCodingModal}>Click Here To View Programs</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</lightning-accordion-section>
+
+				<lightning-accordion-section name="Technical Round" label="Technical Round" if:true={showTechnicalRound}>
+					<div class="slds-p-around_large">
+						<c-ep_-technical-round3 candidate-id={_candidateData.Id} onmycustomevent={handleCustomEvent}></c-ep_-technical-round3>
+					</div>
+				</lightning-accordion-section>
+
+
+					<lightning-accordion-section name="Manager Assessment" label="Manager Assessment" if:true={showManagerAssessment}>
+
+						<div class="slds-p-around_large">
+
+							<div class="slds-text-heading_small sectionHeader slds-p-around_small">Manager Assessment</div>
+
+							<div class="slds-wrap">
+								<template for:each={assessments} for:item="assessment">
+									<div key={assessment.apiName} class="slds-col slds-size_1-of-3 slds-p-horizontal_small">
+										<div class="slds-form-element slds-m-around_small">
+											<div class="slds-grid slds-wrap slds-align-middle">
+												<label class="slds-form-element__label slds-col slds-size_1-of-2 slds-p-right_small slds-p-top--medium">
+												{assessment.label}
+												</label>
+												<div class="slds-col slds-grid slds-align-middle">
+													<div if:true={isManagerShown}>
+														<c-star-rating-component name={assessment.apiName}
+															default-val={assessment.value} onratingcount={starratingcount}>
+														</c-star-rating-component>
+													</div>
+													<template if:false={isManagerShown}>
+														<c-star-rating-component name={assessment.apiName} read-only=true
+															default-val={assessment.value} onratingcount={starratingcount}>
+														</c-star-rating-component>
+													</template>
+												</div>
+											</div>
+										</div>
+									</div>
+								</template>
+								<div class="validate slds-text-color_error slds-p-left--large slds-text-heading_small"
+									if:true={checkMrRatings}> Please fill above all ratings</div>
+								<div
+									class="slds-col slds-m-around_small custom-class slds-p-horizontal_small slds-size_1-of-3">
+									<lightning-textarea label="Manager Comments" value={mrComments}
+										onchange={handleMrComments} disabled={isManagerComments}>
+									</lightning-textarea>
+									<div class="validate slds-text-color_error slds-text-heading_small"
+										if:true={checkMrComments}> Please enter the comments</div>
+								</div>
+							</div>
+						</div>
+					</lightning-accordion-section>
+
+					<lightning-accordion-section name="HR Assessment" label="HR Assessment" if:true={isHrAccordionShown}>
+						<div class="slds-p-around_large">
+							<div class="slds-text-heading_small sectionHeader slds-p-around_small">Personal Details
+							</div>
+							<div class="slds-wrap">
+								<template for:each={hrAssessments} for:item="hrAssess">
+									<div class="slds-col slds-size_1-of-3 slds-p-horizontal_small"
+										key={hrAssess.apiName}>
+										<div class="slds-grid slds-wrap slds-align-middle">
+											<label class="slds-form-element__label slds-col slds-size_1-of-2 slds-p-right_small slds-p-top--medium">{hrAssess.label}</label>
+											<div class="slds-col slds-grid slds-align-middle">
+												<div if:true={isSelectShown}>
+													<c-star-rating-component name={hrAssess.apiName}
+														default-val={hrAssess.value} onratingcount={starratingcount}>
+													</c-star-rating-component>
+												</div>
+												<template if:false={isSelectShown}>
+													<c-star-rating-component name={hrAssess.apiName}
+														onratingcount={starratingcount} read-only=true
+														default-val={hrAssess.value}>
+													</c-star-rating-component>
+												</template>
+											</div>
+										</div>
+									</div>
+
+								</template>
+								<div class="hrValidate slds-text-color_error slds-p-left--small slds-text-heading_small"
+									if:true={hasEmptyHrAssessment}> Please fill above all ratings</div>
+								<div class="slds-col custom-class slds-p-horizontal_small slds-size_1-of-3">
+									<lightning-textarea label="HR Comments" onchange={handleHrComments}
+										value={hrComments} disabled={isHrAssessmentDisabled}>
+									</lightning-textarea>
+									<div class="validate slds-text-color_error slds-text-heading_small"
+										if:true={checkHrComments}> Please enter the comments</div>
+								</div>
+							</div>
+						</div>
+					</lightning-accordion-section>
+			</lightning-accordion>
+		</div>
+
+		<hr class="slds-m-left_small slds-m-right_small">
+
+		<div class="slds-p-around_large" style="padding-bottom:5%; background-color:white">
+			<div class="slds-float_right" style="padding-right:2%">
+				<button class="slds-button slds-button_destructive"
+                    style="color:white;" data-value="Rejected"
+                    onclick={handleActions} if:true={showRejectButton}>Reject</button> &nbsp;
+				<button class="slds-button slds-button_brand"
+                    style="background-color: #02426f;color:white;" data-value="On Hold"
+                    onclick={handleActions} if:true={showHoldButton}>Hold</button>&nbsp;
+				<button class="slds-button slds-button_success"
+                    style="color:white;" data-value="Promoted"
+                    onclick={handleActions} if:true={showPromoteButton}>Promote</button>
+				<button class="slds-button slds-button_success"
+                    style="color:white;" data-value="Selected"
+                    onclick={handleActions} if:true={showSelectButton}>Select</button>
+			</div>
+		</div>
+	</div>
+	<div lwc:else>
+		<div style="height:6rem;position:relative">
+			<div class="slds-spinner_container">
+				<div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+					<span class="slds-assistive-text">Loading</span>
+					<div class="slds-spinner__dot-a"></div>
+					<div class="slds-spinner__dot-b"></div>
+				</div>
+			</div>
+		</div>
+ 	</div>
+	<template if:true={isLoading}>
+		<lightning-spinner class="slds-is-fixed" alternative-text="Loading"></lightning-spinner>
+	</template>
+
+    <!-- Modal for coding review -->
+    <template if:true={isCodingPage}>
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" 
+                    class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+					<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+						<lightning-icon icon-name="utility:close"
+						alternative-text="close"
+						variant="inverse"
+						size="small" ></lightning-icon>
+						<span class="slds-assistive-text">Close</span>
+					</button>
+                
+                    <div class="slds-modal__content" id="modal-content-id-1">
+						<!-- <iframe src={vfPageURL} width="100%" height="550px" class="iframe"></iframe>  slds-p-around_small-->
+                        <c-ep_coding-test candidate-id = {_candidateData.Id} from-modal = "true"></c-ep_coding-test>
+                    </div> 
+                     <!-- <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={closeModal}>Close</button>
+                    </footer>                -->
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

@@ -1,0 +1,26 @@
+.main{
+	background : #ffffff;
+}
+
+th {
+	background : #d5d5d5;
+	font-size: 14px;
+	border: 1px solid #A8A8A8;
+	/* border-right: 1px solid #A8A8A8; */
+	text-align: center;
+}
+
+td {
+	font-size: 14px;
+	border: 1px solid #A8A8A8;
+	/* border-right: 1px solid #A8A8A8; */
+	text-align: center;
+}
+
+thead tr {
+	height: 35px !important;
+}
+
+tbody tr>td:first-child {
+	padding: 1%;
+}

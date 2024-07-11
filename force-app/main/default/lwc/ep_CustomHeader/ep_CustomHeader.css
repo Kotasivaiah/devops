@@ -1,0 +1,27 @@
+.logoContainer {
+            height: 4rem;
+            background: white;
+            z-index: 99999;
+            top: 0;
+            position: fixed;
+            width: 100%;
+}
+.leftLogo {
+    width: 17rem;
+    height: 4rem;
+    margin-left: 1%;
+    padding: 10px;
+    float: left;
+}
+.rightLogo {
+    float: right;
+    padding: 10px;
+    padding-top:4px !important;
+}
+
+.welcome {
+    Font-size:35px;
+    color:rgb(21 70 106);
+    background-color:white;
+    padding-top:5rem;
+}

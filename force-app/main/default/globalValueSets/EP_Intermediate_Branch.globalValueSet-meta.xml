@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>MPC</fullName>
+        <default>false</default>
+        <label>MPC</label>
+    </customValue>
+    <customValue>
+        <fullName>BiPC</fullName>
+        <default>false</default>
+        <label>BiPC</label>
+    </customValue>
+    <customValue>
+        <fullName>MEC</fullName>
+        <default>false</default>
+        <label>MEC</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <masterLabel>EP_Intermediate Branch</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

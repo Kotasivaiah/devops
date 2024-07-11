@@ -1,0 +1,15 @@
+<apex:page docType="html-5.0" showHeader="false" sidebar="false" >
+    <head>
+    	<title>Eligible Candidates</title>
+    </head>
+    <apex:includeLightning />
+    <apex:slds />
+    <div id="LwcId" />
+    <script>
+            $Lightning.use("c:ExamPortal", function() {
+            $Lightning.createComponent("c:ep_CandidateList", {},
+            "LwcId",
+            function(cmp) {});
+        });
+    </script>
+</apex:page>

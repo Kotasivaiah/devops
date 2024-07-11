@@ -1,0 +1,87 @@
+<template>
+
+	<div class="slds-form-element selectbox">
+		<div class="slds-form-element__control">
+			<div class="slds-combobox_container slds-size_large" style="width: inherit;">
+				<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+					aria-expanded="true" aria-haspopup="listbox" role="combobox" onmouseleave={handleLeave}><!--eventhandler-->
+					<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="text-input-id-47" lwc:if={label}>{label}</label>
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                                <lightning-icon class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                    icon-name="utility:search"
+                                    size="x-small" aria-hidden="true"
+                                    alternative-text="search">
+                                </lightning-icon>
+                                <lightning-input 
+									variant="label-hidden"
+									type="text" 
+									placeholder="search..." 
+									onchange ={handleFilterCandidates}
+									onfocus={handleShowDropdown}
+									onclick={handleShowDropdown}>
+                                </lightning-input>
+                            </div>
+                        </div>
+					</div>
+					<div class="slds-text-body_small" style="color: rgb(255, 31, 31);;" if:true={_showError}>{errorMessage}</div>
+					<!-- Drop down section : Start -->
+					<template if:true={showdropdown}>
+						<div id="listbox-id-5" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid"
+							role="listbox">
+							<ul class="slds-listbox slds-listbox_vertical" role="presentation">
+								<template for:each={_options} for:item="option" for:index="index" if:true={hasChoices}>
+									<li key = {option.value} role="presentation" class="slds-listbox__item">
+										<div    aria-checked="true" 
+                                                id={option.value} 
+                                                class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-is-selected" 
+                                                role="option"
+                                                onclick={optionClicked}
+                                                key={option.value}
+                                                data-value={option.value}
+                                                data-index={index}>
+                                            <template if:true={option.isSelected}>
+                                                <lightning-icon size="x-small" icon-name="utility:check" ></lightning-icon>
+                                            </template>
+											<span class="slds-media__body">
+                                                <span class="slds-truncate" title={option.value}>{option.value}</span>
+											</span>
+										</div>
+									</li>
+								</template>
+                                <div class="slds-align_absolute-center" if:false={hasChoices}>
+                                    No results
+                                </div>
+							</ul>
+						</div>
+					</template>
+					<!-- Drop down section : Start -->
+				</div>
+			</div>
+			<!-- Selected Pills section : Start-->
+			<template if:true = {showPills}>
+				<div class="slds-listbox_selection-group" style="height:auto;">
+					<ul class="slds-listbox slds-listbox_horizontal" role="listbox" aria-label="Selected Options:"
+						aria-orientation="horizontal">
+						<template for:each={selectedvalues} for:item="eachvalue">
+							<li key={eachvalue} class="slds-listbox-item" role="presentation">
+								<span class="slds-pill slds-m-right_xx-small slds-m-top_x-small" role="option" tabindex="0" aria-selected="true">
+									<span class="slds-pill__label slds-text-heading_small slds-p-left_small slds-p-right_small slds-p-bottom_xx-small" title={eachvalue}>{eachvalue}</span>
+								<span class="slds-icon_container slds-pill__remove" title="Remove">
+										<lightning-icon icon-name="utility:close" size="x-small" aria-hidden="true"
+											alternative-text="Remove" title="Remove" onclick={closePill}
+											data-value={eachvalue}>
+										</lightning-icon>
+										<span class="slds-assistive-text">Click to remove</span>
+								</span>
+								</span>
+							</li>
+						</template>
+					</ul>
+				</div>
+			</template>
+			<!-- Selected Pills section : End-->
+		</div>
+	</div>
+</template>

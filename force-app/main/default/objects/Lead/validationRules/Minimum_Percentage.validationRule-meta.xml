@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Minimum_Percentage</fullName>
+    <active>true</active>
+    <errorConditionFormula>(
+ VALUE(Graduation_Percentage__c ) &lt; 65
+)||
+(
+ VALUE(Post_Graduate_Percentage__c) &lt; 65
+)</errorConditionFormula>
+    <errorMessage>Your academic percentage doesn&apos;t qualify the minimum criteria.</errorMessage>
+</ValidationRule>

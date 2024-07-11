@@ -1,0 +1,36 @@
+/* .slds-accordion__summary {
+	background-color: #02426f !important;
+	border-radius: 5px;
+	height: 50px !important; 
+	color: white !important;
+} */
+
+/* .slds-accordion__summary-heading {
+} */
+
+/* .slds-accordion__section {
+	background-color: #02426f !important;
+	border-radius: 5px;
+	height: 50px !important;
+	color: white !important;
+} */
+
+:host {
+	/*#02426f */
+	--slds-c-accordion-summary-color-background : white;
+	--slds-c-accordion-summary-radius-border : 5px;
+	--slds-c-accordion-heading-text-color : white;
+}
+
+.slds-accordion__summary {
+	background-color:  var(--sds-c-accordion-summary-color-background);
+	border-radius: var(--slds-c-accordion-summary-radius-border);
+	height: 50px !important;
+}
+
+.slds-accordion__summary-content {
+	color: var(--slds-c-accordion-heading-text-color, white);
+}
+.slds-accordion__summary-action:hover {
+	color: var(--slds-c-accordion-heading-text-color, white);
+}

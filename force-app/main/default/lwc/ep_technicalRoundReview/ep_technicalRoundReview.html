@@ -1,0 +1,102 @@
+<template>
+	<lightning-card>
+	<div class="main slds-p-around_large">
+
+		<lightning-tabset variant="vertical">
+			<template for:each={tabs} for:index="index" for:item="tab">
+
+				<lightning-tab key={tab} label={tab} value={tab} onactive={handleActive}>
+
+					<table class="slds-table slds-table_bordered slds-border--right slds-border--left"
+						aria-labelledby="element-with-table-label other-element-with-table-label" lwc:if={showTable}>
+						<thead class="freezeHeaderParentTable">
+							<tr class="slds-line-height_reset">
+								<th class="sno">S.No</th>
+								<th scope="col">
+									<div class="slds-truncate" title="Name">Candidate Name</div>
+								</th>
+								<th>Branch</th>
+								<th>Written Marks (Apt. + Tech.) </th>
+								<th> Coding Round Rating </th>
+								<th> Coding Reviewer</th>
+								<th if:true={showShareRecord}></th>
+                                <th if:true={showTechnicalReviewer}>Technical Round Reviewer</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template for:each={filteredCandidateData} for:index="index" for:item="candidate">
+								<tr key={candidate.id}>
+									<td class="sno" data-label="S.No">
+										{candidate.sno}
+									</td>
+									<td data-label="Name" scope="row" class="custom-record-picker-container">
+										<div class="slds-truncate" title="Name">
+											<a href="#" data-id={candidate.id}
+												onclick={openDetails}>{candidate.name}</a>
+										</div>
+									</td>
+									<td data-id={candidate.id} class="custom-record-picker-container">{candidate.branch}
+									</td>
+										<td data-id={candidate.id} class="custom-record-picker-container">
+											{candidate.writtenMarks} ({candidate.aptitudeMarks} +
+											{candidate.technicalMarks})
+										</td>
+										<td data-id={candidate.id} class="custom-record-picker-container">
+											{candidate.codingMarks}
+										</td>
+										<td data-id={candidate.id} class="custom-record-picker-container">
+											{candidate.codingReviwedBy}
+										</td>
+										<td data-label="share" scope="row" class="custom-record-picker-container" if:true={showShareRecord}>
+
+												<template if:true={candidate.showClickHere}>
+                                                <div class="slds-truncate" title="Name">
+                                                    <a href="#" data-id={candidate.id} onclick={handleclickhere}>Share Record</a>
+                                                </div>
+                                            </template>
+
+												<div class="slds-grid" if:true={candidate.showUserSelection}>
+
+													<div class="slds-col slds-size_7-of-12">
+														<lightning-record-picker label="share" variant="label-hidden"
+															data-id={candidate.id} object-api-name="User"
+															data-candidate-id={candidate.id}
+															onchange={handleRecordPickerChange} filter={filter}>
+														</lightning-record-picker>
+													</div>
+
+													<div class="slds-col slds-size_1-of-12">
+													</div>
+
+													<div class="slds-col slds-size_3-of-12 slds-p-right_xx-small">
+														<lightning-button-icon icon-name="action:approval"
+															data-id={candidate.id} class="slds-m-left_xx-small"
+															title="Save" onclick={handleSuccess}>
+														</lightning-button-icon>
+														<lightning-button-icon icon-name="action:close"
+															data-id={candidate.id} class="slds-m-left_xx-small"
+															title="Cancel" onclick={handleCancel}>
+														</lightning-button-icon>
+													</div>
+
+													<div class="slds-col slds-size_1-of-12">
+													</div>
+												</div>
+										</td>
+										<td data-id={candidate.id} class="custom-record-picker-container" if:true={showTechnicalReviewer}>
+											{candidate.technicalReviewedBy} 
+                                        </td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+                    <template lwc:else>
+                        <p class="slds-align_absolute-center">{noRecordsMsg}</p>
+                    </template>
+				</lightning-tab>
+			</template>
+
+		</lightning-tabset>
+	</div>
+	</lightning-card>
+</template>

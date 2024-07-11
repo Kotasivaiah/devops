@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>CSE</fullName>
+        <default>false</default>
+        <label>CSE</label>
+    </customValue>
+    <customValue>
+        <fullName>ECE</fullName>
+        <default>false</default>
+        <label>ECE</label>
+    </customValue>
+    <customValue>
+        <fullName>EEE</fullName>
+        <default>false</default>
+        <label>EEE</label>
+    </customValue>
+    <customValue>
+        <fullName>IT</fullName>
+        <default>false</default>
+        <label>IT</label>
+    </customValue>
+    <customValue>
+        <fullName>MECH</fullName>
+        <default>false</default>
+        <label>MECH</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <masterLabel>EP_GraduationBranch</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

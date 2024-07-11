@@ -1,0 +1,230 @@
+<template>
+
+	<c-custom-toaster styling="margin:5% 15% 5% 15%; width:40%;"></c-custom-toaster>
+
+	<c-ep_-custom-header showlogo={showlogoValue}></c-ep_-custom-header>
+
+	<div if:true={showSpinner}>
+		<div class="slds-spinner_container">
+			<div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+				<span class="slds-assistive-text">Loading</span>
+				<div class="slds-spinner__dot-a"></div>
+				<div class="slds-spinner__dot-b"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="main" if:true={showLogin}>
+
+		<div class="slds-p-around_small fullwidth">
+			<div class="slds-grid">
+
+				<div class="slds-col slds-size_1-of-2 card recruitmentImg35">
+					<img src={process}/>
+				</div>
+				
+				<div class="slds-col slds-size_1-of-2 width65">
+					<div class="slds-grid slds-grid_vertical slds-align_absolute-center card maincard"
+						if:false={isAdmin}>
+						<template if:true={invalidCredentials}>
+							<div class="invalid error slds-text-heading_large">{invalidCredentialsMessage}</div>
+							
+						</template>
+
+						<div class="slds-col slds-size_3-of-5 slds-p-around_small slds-form-element">
+							<label>Hallticket Number</label>
+							<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+								<input type={mask} class="slds-input c" name="htNumber" onkeypress={handleKeyPress} />
+								<button class="slds-button slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default slds-button_icon"
+                                title="Settings" onclick={handleShowClick}>
+                                        <lightning-icon size="x-small" class="slds-button__icon" icon-name={passwordvisible}></lightning-icon>
+                                    </button>
+							</div>
+							<div class="error" if:true={showvalidHallTicket} >{invalidHallTicketMessage}								
+						</div>
+							<br>
+					</div>
+
+					<div class="slds-col slds-size_3-of-5 slds-p-around_small slds-form-element">
+						<button class="slds-align_absolute-center customButton" onclick={handleLogin}>
+							Login</button>
+					</div>
+
+					<p class="slds-align_absolute-center">Login as &nbsp;<a href="#"
+							onclick={handleLoginChange}>Admin</a></p>
+				</div>
+
+				<div class="slds-grid slds-grid_vertical slds-align_absolute-center card maincard" if:true={isAdmin}>
+					<template if:true={invalidCredentials}>
+						<div class="invalid error slds-text-heading_large">{invalidCredentialsMessage}</div> 
+					</template> 
+
+					<div class="slds-col slds-size_3-of-5 slds-p-around_small slds-form-element">
+
+						<label>Hallticket Number</label>
+						<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+							<lightning-icon size="x-small"
+								class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default"
+								icon-name="utility:number_input"></lightning-icon>
+							<input type="text" class="slds-input a" name="candidateHallticket" onkeypress={handleKeyPress}/>
+						</div>
+					</div>
+
+					<div class="slds-col slds-size_3-of-5 slds-p-around_small slds-form-element">
+						<label>Password</label>
+						<div
+							class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+							<input type={a_mask} class="slds-input a" name="password" onkeypress={handleKeyPress}/>
+							<button class="slds-button slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default slds-button_icon" 
+								title="password" onclick={togglePassword}>
+								<lightning-icon size="x-small" class=" slds-button__icon" icon-name={a_passwordvisible}></lightning-icon>
+							</button>
+						</div><br>
+						</div>
+							<div class="slds-col slds-size_3-of-5 slds-p-around_small slds-form-element">
+								<button class="slds-align_absolute-center customButton" 
+										onclick={handleAdminLogin}>Login</button>
+							</div>
+							<p class="slds-align_absolute-center">Login as &nbsp;<a href="#"
+									onclick={handleLoginChange}>Candidate</a></p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>	
+
+		<div if:true={showInstructions} class="main slds-m-around_large instructions">
+
+			<div class="slds-builder-header__item-label instructionsHeader">
+				<b>Instructions</b>
+			</div>
+
+			<div class="innerInstructions">
+
+				<ul class="slds-list_ordered">
+
+					<li>Please check if you have proper Internet connection.</li>
+					<li>Close all the other tabs including email before you start the exam.</li>
+					<li>Your online assessment will auto terminate if you open any other tab/window.</li>
+					<li>While taking the exam do not click on the back button.</li>
+
+					<!-- 1st Round Instructions - start -->
+					<template if:true={writtenRound}>
+
+						<li>Your online assessment will have 10 aptitude and 10 technical questions.</li>
+						<li>Each question carries 1 mark.(no negative marking)</li>
+						<li>Duration of the test is 30 minutes</li>
+						<li>Your assessment will auto submit after 30 minutes if you haven't
+							submitted.</li>
+
+					</template>
+					<!-- 1st Round Instructions - end -->
+
+					<!-- 2nd Round Instructions - start -->
+					<template if:true={codingRound}>
+
+						<li>Your online assessment will have 3 C/Java questions.</li>
+						<li>Duration of the test is 60 minutes</li>
+						<li>Your assessment will auto submit after 60 minutes if you haven't
+							submitted.</li>
+
+					</template>
+
+					<!-- 2nd Round Instructions - end -->
+					<li>Make sure the popup blocker is disabled before clicking "Start Test".</li>
+					<li>Click "Start Test" at the bottom of the screen.</li>
+					<li>Once your exam is completed you will be notified through your
+						TPO/TAP.</li>
+
+				</ul>
+
+			</div>
+
+			<div if:true={writtenRound} class="combobox slds-p-around_medium">
+				<lightning-combobox
+					class="written"
+					label="Preferred Programming Language"
+					value='Java'
+					placeholder="Select Language"
+					options={writtenOptions}>
+				</lightning-combobox>
+			</div>
+
+			<div if:true={codingRound} class="combobox slds-p-around_medium">
+				<lightning-combobox
+					class="coding"
+					label="Preferred Programming Language"
+					value='Java'
+					placeholder="Select Language"
+					options={codingOptions}>
+				</lightning-combobox>
+			</div>
+
+			<div class="categoryError error slds-hide slds-p-left_small">
+				{selectLanguageMessage}
+			</div>
+
+			<div class="slds-p-around_medium" if:true={showStartButton}>
+				<lightning-button 
+					variant="brand" 
+					label="Start Test" 
+					onclick={handleStartTest}>
+				</lightning-button>
+			</div>
+
+			<template if:true={showSecretKeyPopup}>
+
+				<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+					aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+
+					<div class="slds-modal__container">
+
+						<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+							<div class="slds-m-around_medium slds-form-element">
+								<label>Enter your Secret Key</label>
+								<div
+									class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+									<input type={secretKeymask} class="slds-input secretKey" name="secretKey"/>
+									<button 
+										class="slds-button slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default slds-button_icon" 
+										title="Settings" onclick={handleSecretKeyClick}>
+										<lightning-icon size="x-small" class="slds-button__icon" icon-name={keyvisible}></lightning-icon>
+									</button>
+								</div>
+
+								<div class="error" if:true={showWrongSecretKeydiv}>{validKeyMessage}</div>
+
+							</div>
+						</div>
+
+						<footer class="slds-modal__footer">
+							<button class="slds-button slds-button_neutral" onclick={handleCancel}>Cancel</button>
+							<button class="slds-button slds-button_brand" onclick={handleVerify}>Verify</button>
+						</footer>
+
+					</div>
+
+				</section>
+
+				<div class="slds-backdrop slds-backdrop_open"></div>
+
+			</template>
+
+		</div>
+
+	<div if:true={showQuestionaire} class="main slds-m-around_large instructions">
+
+		<b>
+			<center> 
+				{keyMatchedMessage}
+			</center>
+		</b>
+
+	</div>
+
+	<div if:true={showMessage} class="slds-align_absolute-center  message">
+		{errorMessage}
+	</div>
+	
+</template>

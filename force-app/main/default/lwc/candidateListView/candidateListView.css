@@ -1,0 +1,83 @@
+/* .horizontal-scroll-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+}
+
+.horizontal-scroll-content {
+    display: inline-block;
+    min-width: 100%; */
+/* } */
+
+/* table tr th:first-child,
+table td:first-child {
+  position: sticky;
+  width: 100px;
+  left: 0;
+  z-index: 10;
+  background: red;
+}
+.tbody {
+    position : sticky} 
+.thead {
+    position : sticky} */
+
+/* .header-side-block  {
+    background-color: white;
+    color: white;
+    font-weight: 750;
+    font-size: 1em;
+    position: sticky;
+    left: 0;
+    top:0px; 
+    z-index:2;
+    width: auto !important;
+    max-width: 200px !important;
+} 
+
+.vertical-line {
+     border: 1.5px solid rgb(248, 241, 241);
+     padding-top:5px;
+     padding-bottom:8px;
+     position: sticky;
+     left: 0px;
+     width:0px;
+     background: white;
+     display: table-cell;
+     z-index: 2;
+} 
+
+.view {
+  margin: auto !important;
+  width: 600px !important;
+}
+
+.wrapper {
+  position: relative !important;
+  overflow: auto !important;
+  border: 1px solid black !important;
+  white-space: nowrap !important;
+}
+
+.sticky-col {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  background-color: white !important;
+} */
+
+
+.fix{
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: #f8f8f8;
+  }
+
+ .fix-column{
+     position: sticky; top: 0;left: 0;z-index: 3;
+     background: #f8f8f8;
+   }
+  .fix-rowHeader{
+      position: sticky;top: 0;left: 0;z-index: 2;
+     background: #f8f8f8;
+   }

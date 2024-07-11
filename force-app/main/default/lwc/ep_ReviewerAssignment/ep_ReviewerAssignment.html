@@ -1,0 +1,41 @@
+<template>
+    
+    <div class="slds-spinner_container slds-is-fixed" if:true={showSpinner}>
+		<div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+			<span class="slds-assistive-text">Loading</span>
+			<div class="slds-spinner__dot-a"></div>
+			<div class="slds-spinner__dot-b"></div>
+		</div>
+	</div>
+
+    <div class="main slds-p-around_medium">
+        <div class="slds-grid slds-grid_vertical">
+
+            <div class="slds-col slds-size_1-of-1 slds-p-around_small slds-text-align_center slds-text-heading_large slds-text-text_bold">
+                Reviewers Assignment
+            </div>
+
+            <div class="slds-col slds-size_1-of-1 slds-p-around_small">
+
+                <lightning-combobox label="Assign For" placeholder="Select"
+                    options={rounds}
+                    value=""
+                    class="combobox">
+                </lightning-combobox>
+
+            </div>
+
+            <div class="slds-col slds-size_1-of-1 slds-p-around_small">
+                <c-ep_-multi-select-searchbox
+                options = {panelList}
+                label = 'Panel Members'>
+                </c-ep_-multi-select-searchbox>
+            </div>
+
+            <div class="slds-col slds-size_1-of-1 slds-p-around_small">
+                <button class="slds-button slds-button_brand slds-align_absolute-center" onclick={assignReviewers}>Assign</button>
+            </div>
+
+        </div>
+    </div>
+</template>

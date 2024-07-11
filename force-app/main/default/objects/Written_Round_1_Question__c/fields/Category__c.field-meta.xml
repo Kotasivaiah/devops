@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Category_picklist</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Technical</controllingFieldValue>
+            <valueName>C</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical</controllingFieldValue>
+            <valueName>Java</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Percentage</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Calendar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Average</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Clock</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Profit and Loss</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Simple Interest</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Problems on Ages</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Time and Distance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Height and Distance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Boats and Streams</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aptitude</controllingFieldValue>
+            <valueName>Pipes and Cistern</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

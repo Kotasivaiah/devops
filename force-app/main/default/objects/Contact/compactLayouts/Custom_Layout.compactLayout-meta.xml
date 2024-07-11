@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Custom_Layout</fullName>
+    <fields>Name</fields>
+    <fields>Exam_Start_Date__c</fields>
+    <fields>Written_Test_Status__c</fields>
+    <fields>Coding_Round_Status__c</fields>
+    <fields>Technical_Round_Status__c</fields>
+    <fields>Manager_Round_Status__c</fields>
+    <fields>HR_Round_Status__c</fields>
+    <label>Custom Layout</label>
+</CompactLayout>
